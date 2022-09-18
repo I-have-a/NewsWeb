@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 注意配置顺序, 用官网的顺序 -->
+    <typeAliases>
+        <package name="com.news.model"/>
+    </typeAliases>
+    <environments default="development">
+        <!-- 配置多个 environment 能适配多个数据库 default: 当前使用的数据库-->
+        <environment id="development">
+            <transactionManager type="JDBC"/><!-- 事务管理, 后面学Spring就直接接管了 -->
+            <dataSource type="POOLED">
+                <!-- 数据库信息, 和事务管理一样被Spring接管 -->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://192.168.0.103:3306/news-sys?serverTimezone=Hongkong&amp;useSSL=false&amp;useServerPrepStmts=true"/>
+                <property name="username" value="root"/>
+                <property name="password" value="986a188f"/>
+            </dataSource>
+        </environment>
+
+        <environment id="test">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <!-- 数据库信息 -->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/test?serverTimezone=Hongkong&amp;useSSL=false&amp;useServerPrepStmts=true"/>
+                <property name="username" value="root"/>
+                <property name="password" value="986a188f"/>
+            </dataSource>
+        </environment>
+
+    </environments>
+    <mappers>
+        <!-- 映射文件 -->
+        <package name="mybatis"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 文件名称模板: [要操作的表名Mapper.xml] -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace: 名称空间，用来区分不同Mapper文件中的同名语句引用如: testSQL.selectTest -->
+<mapper namespace="mybatis.CategoryMapper">
+    <!--
+        id: 唯一标识;
+        resultType: 返回类型, 可以用 mybatis-config 中配置的别名
+                    基础类型可以直接写
+    -->
+    <select id="selectCategory" resultType="Category">
+        select *
+        from `news-sys`.category
+    </select>
+    <update id="updateTest">
+
+    </update>
+    <delete id="deleteTest">
+
+    </delete>
+    <insert id="insertTest">
+
+    </insert>
+</mapper>

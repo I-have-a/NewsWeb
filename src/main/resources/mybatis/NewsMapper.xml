@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.NewsMapper">
+
+    <resultMap id="newsResultMap" type="News">
+        <id column="category_id" property="categoryId"/>
+    </resultMap>
+
+    <select id="selectNews" resultMap="newsResultMap">
+        select *
+        from `news-sys`.News
+    </select>
+
+    <select id="selectWhere" resultMap="newsResultMap">
+        select *
+        from `news-sys`.News
+        where category_id = #{id};
+    </select>
+    <select id="getDetails" resultMap="newsResultMap">
+        select *
+        from `news-sys`.News
+        where id = #{id};
+    </select>
+
+    <update id="updateTest">
+
+    </update>
+    <delete id="deleteTest">
+
+    </delete>
+    <insert id="insertTest">
+
+    </insert>
+</mapper>
