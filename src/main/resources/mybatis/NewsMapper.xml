@@ -24,6 +24,13 @@
         where id = #{id};
     </select>
 
+    <select id="Recommend" resultMap="newsResultMap">
+        select *
+        from `news-sys`.news
+        order by rand()
+        limit 5
+    </select>
+
     <update id="updateTest">
 
     </update>

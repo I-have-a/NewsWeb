@@ -39,21 +39,17 @@
 </div>
 <div class="container container-small">
     <h1>注册
-        <small>已有账号，<a href="signup.jsp">登录</a></small>
+        <small>已有账号，<a href="login.jsp">登录</a></small>
     </h1>
     <form>
         <div class="form-group">
             <label>手机</label>
-            <label>
-                <input type="text" class="form-control">
-            </label>
+            <input type="text" class="form-control">
         </div>
         <div class="form-group">
             <label>验证码</label>
             <div class="input-group">
-                <label>
-                    <input type="text" class="form-control">
-                </label>
+                <input type="text" class="form-control">
                 <div class="input-group-btn">
                     <div class="btn btn-default">获取验证码</div>
                 </div>
@@ -61,9 +57,7 @@
         </div>
         <div class="form-group">
             <label>密码</label>
-            <label>
-                <input type="password" class="form-control">
-            </label>
+            <input type="password" class="form-control">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">注册</button>
@@ -73,8 +67,6 @@
         </div>
     </form>
 </div>
-<div class="footer">
-    Copyright © 2017 jkdev.cn | 极客开发者2017版
-</div>
+<jsp:include page="common/tail.jsp" flush="true"></jsp:include>
 </body>
 </html>

@@ -1,11 +1,12 @@
 package com.news.dao.Impl;
 
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import java.util.List;
 
-public class BaseDao {
-    public SqlSession getSession() throws Exception {
-        return new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml")).openSession();
-    }
+public abstract class BaseDao<T> {
+
+    public abstract List<T> getAll();
+
+    public abstract List<T> getWhere(int id);
+
+    public abstract T getOne(int id);
 }

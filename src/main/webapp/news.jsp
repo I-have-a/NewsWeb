@@ -59,46 +59,19 @@
             <div class="card-title">相关推荐</div>
             <div class="card-body">
                 <div class="list">
-                    <div class="item clearfix">
-                        <div class="col-xs-5 no-padding-h"><img src="https://dummyimage.com/1000x700/666/ccc" alt="">
-                        </div>
-                        <div class="col-xs-7">
-                            <div class="title">记结婚高圆圆与赵又廷北京登</div>
-                            <div class="desc">25k阅读•35分钟前发布</div>
-                        </div>
-                    </div>
-                    <div class="item clearfix">
-                        <div class="col-xs-5 no-padding-h"><img src="https://dummyimage.com/1000x700/666/ccc" alt="">
-                        </div>
-                        <div class="col-xs-7">
-                            <div class="title">记结婚高圆圆与赵又廷北京登</div>
-                            <div class="desc">25k阅读•35分钟前发布</div>
-                        </div>
-                    </div>
-                    <div class="item clearfix">
-                        <div class="col-xs-5 no-padding-h"><img src="https://dummyimage.com/1000x700/666/ccc" alt="">
-                        </div>
-                        <div class="col-xs-7">
-                            <div class="title">记结婚高圆圆与赵又廷北京登</div>
-                            <div class="desc">25k阅读•35分钟前发布</div>
-                        </div>
-                    </div>
-                    <div class="item clearfix">
-                        <div class="col-xs-5 no-padding-h"><img src="https://dummyimage.com/1000x700/666/ccc" alt="">
-                        </div>
-                        <div class="col-xs-7">
-                            <div class="title">记结婚高圆圆与赵又廷北京登</div>
-                            <div class="desc">25k阅读•35分钟前发布</div>
-                        </div>
-                    </div>
-                    <div class="item clearfix">
-                        <div class="col-xs-5 no-padding-h"><img src="https://dummyimage.com/1000x700/666/ccc" alt="">
-                        </div>
-                        <div class="col-xs-7">
-                            <div class="title">记结婚高圆圆与赵又廷北京登</div>
-                            <div class="desc">25k阅读•35分钟前发布</div>
-                        </div>
-                    </div>
+                    <%
+                        for (News news1 : newsDao.RecommendNews()) {%>
+                            <div class="item clearfix">
+                                <a href="news.jsp?id=<%= news1.getId()%>">
+                                    <div class="col-xs-5 no-padding-h"><img src="img/<%= news1.getImg()%>" alt="">
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <div class="title"><%= news1.getTitle()%></div>
+                                        <div class="desc">25k阅读•<%= newsDao.pundateToString(news1)%></div>
+                                    </div>
+                                </a>
+                            </div>
+                    <% }%>
                 </div>
             </div>
         </div>
@@ -135,8 +108,6 @@
         </div>
     </div>
 </div>
-<div class="footer">
-    Copyright © 2017 jkdev.cn | 极客开发者2017版
-</div>
+<jsp:include page="common/tail.jsp" flush="true"></jsp:include>
 </body>
 </html>

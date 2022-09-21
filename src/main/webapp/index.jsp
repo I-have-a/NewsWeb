@@ -1,5 +1,3 @@
-<%@ page import="com.news.model.Category" %>
-<%@ page import="com.news.dao.Impl.CategoryDaoImpl" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.news.model.Tag" %>
 <%@ page import="com.news.dao.Impl.TagDaoImpl" %>
@@ -22,44 +20,20 @@
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-<div class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <a href="index.jsp" class="navbar-brand"></a>
-        </div>
-        <!-- class="visible-xs-inline-block"：在超小屏幕上显示-->
-        <label for="toggle-checkbox" id="toggle-label" class="visible-xs-inline-block">菜单</label>
-        <input type="checkbox" class="hidden" id="toggle-checkbox">
-        <div class="hidden-xs">
-            <ul class="nav navbar-nav">
-                <%
-                    CategoryDaoImpl categoryDao = new CategoryDaoImpl();
-                    List<Category> categories = categoryDao.getAll();
-                %>
-                <li class="active"><a href="index.jsp">首页</a></li>
-                <% for (Category category : categories) {%>
-                <li><a href="index.jsp?category=<%= category.getId()%>"><%=category.getName()%>
-                </a></li>
-                <%}%>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="login.jsp">登陆</a></li>
-                <li><a href="signup.jsp">注册</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+<jsp:include page = "common/header.jsp" flush = "true"></jsp:include>
+    <%
+        String tagNum = request.getParameter("tag");
+        String categoryNum = request.getParameter("category");
+    %>
 <div class="container">
     <div class="row">
         <div class="col-sm-2">
             <div class="list-group side-bar hidden-xs">
-                <%
-                    TagDaoImpl tagDao = new TagDaoImpl();
+                <%  TagDaoImpl tagDao = new TagDaoImpl();
                     List<Tag> tags = tagDao.getAll();
                     for (Tag tag : tags) {%>
-                <a href="index.jsp?tag=<%= tag.getId()%>" class="list-group-item"><%=tag.getName()%>
-                </a>
-                <%}%>
+                        <a href="index.jsp?tag=<%= tag.getId()%>" class="list-group-item <%if (tagNum != null && tag.getId() == Integer.parseInt(tagNum)){%>active<% }%>"><%=tag.getName()%></a>
+                <%  }%>
             </div>
         </div>
         <div class="col-sm-7">
@@ -67,14 +41,12 @@
                 <%
                     List<News> newsList;
                     NewsDaoImpl newsDao = new NewsDaoImpl();
-                    String tag = request.getParameter("tag");
                     newsList = newsDao.getAll();
-                    if (tag != null) {
-                        newsList = newsDao.getTagNews(Integer.parseInt(tag));
+                    if (tagNum != null) {
+                        newsList = newsDao.getTagNews(Integer.parseInt(tagNum));
                     }
-                    String category = request.getParameter("category");
-                    if (category != null) {
-                        newsList = newsDao.getWhere(Integer.parseInt(category));
+                    if (categoryNum != null) {
+                        newsList = newsDao.getWhere(Integer.parseInt(categoryNum));
                     }
                     for (News news : newsList) {
                 %>
@@ -145,8 +117,6 @@
         </div>
     </div>
 </div>
-<div class="footer">
-    Copyright © 2017 jkdev.cn | 极客开发者2017版
-</div>
+<jsp:include page="common/tail.jsp" flush="true"></jsp:include>
 </body>
 </html>

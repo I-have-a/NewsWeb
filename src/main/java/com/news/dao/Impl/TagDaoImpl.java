@@ -1,21 +1,16 @@
 package com.news.dao.Impl;
 
-import com.news.dao.Template;
+import com.news.Tool.SqlLink;
 import com.news.model.Tag;
 import mybatis.TagMapper;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 
-public class TagDaoImpl extends BaseDao implements Template<Tag> {
+public class TagDaoImpl extends BaseDao<Tag> {
     @Override
     public List<Tag> getAll() {
-        SqlSession session = null;
-        try {
-            session = getSession();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        SqlSession session = SqlLink.getSqlSessionFactory().openSession();
         TagMapper tagMapper = session.getMapper(TagMapper.class);
         List<Tag> tags = tagMapper.selectTag();
         session.close();

@@ -10,4 +10,6 @@ public interface NewsMapper {
     List<News> selectWhere(int id);
 
     News getDetails(int id);
+
+    List<News> Recommend();
 }

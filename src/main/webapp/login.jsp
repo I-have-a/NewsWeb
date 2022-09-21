@@ -44,15 +44,11 @@
     <form>
         <div class="form-group">
             <label>用户名/手机/邮箱</label>
-            <label>
-                <input type="text" class="form-control">
-            </label>
+            <input type="text" class="form-control">
         </div>
         <div class="form-group">
             <label>密码</label>
-            <label>
-                <input type="password" class="form-control">
-            </label>
+            <input type="password" class="form-control">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">登录</button>
@@ -62,8 +58,6 @@
         </div>
     </form>
 </div>
-<div class="footer">
-    Copyright © 2017 jkdev.cn | 极客开发者2017版
-</div>
+<jsp:include page="common/tail.jsp" flush="true"></jsp:include>
 </body>
 </html>

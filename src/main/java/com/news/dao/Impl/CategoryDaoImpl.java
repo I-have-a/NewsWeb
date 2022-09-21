@@ -1,21 +1,16 @@
 package com.news.dao.Impl;
 
-import com.news.dao.Template;
+import com.news.Tool.SqlLink;
 import com.news.model.Category;
 import mybatis.CategoryMapper;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 
-public class CategoryDaoImpl extends BaseDao implements Template<Category> {
+public class CategoryDaoImpl extends BaseDao<Category> {
     @Override
     public List<Category> getAll() {
-        SqlSession session = null;
-        try {
-            session = getSession();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        SqlSession session = SqlLink.getSqlSessionFactory().openSession();
         CategoryMapper CategoryMapper = session.getMapper(CategoryMapper.class);
         List<Category> categories = CategoryMapper.selectCategory();
         session.close();
