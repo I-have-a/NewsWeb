@@ -41,15 +41,17 @@
     <h1>登录
         <small>没有账号？<a href="signup.jsp">注册</a></small>
     </h1>
-    <form>
+    <form action="login_Idea.jsp">
         <div class="form-group">
             <label>用户名/手机/邮箱</label>
-            <input type="text" class="form-control">
+            <input type="text" name="account" class="form-control">
         </div>
         <div class="form-group">
             <label>密码</label>
-            <input type="password" class="form-control">
+            <input type="password" name="password" class="form-control">
         </div>
+        <% String err = (String) request.getAttribute("err");%>
+        <p><%= err != null ? err : ""%></p>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">登录</button>
         </div>

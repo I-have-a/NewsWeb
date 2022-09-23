@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 
-public class CategoryDaoImpl extends BaseDao<Category> {
+public class CategoryDaoImpl implements Base<Category> {
     @Override
     public List<Category> getAll() {
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();
@@ -18,12 +18,13 @@ public class CategoryDaoImpl extends BaseDao<Category> {
     }
 
     @Override
-    public List<Category> getWhere(int id) {
+    public <E> List<Category> getWhere(E e) {
         return null;
     }
 
     @Override
-    public Category getOne(int id) {
+    public <E> Category getOne(E e) {
         return null;
     }
+
 }

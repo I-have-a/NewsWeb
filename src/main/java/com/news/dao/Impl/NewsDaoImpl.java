@@ -13,9 +13,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class NewsDaoImpl extends BaseDao<News> {
+public class NewsDaoImpl implements Base<News> {
 
     public String pundateToString(News news) {
         DateFormat parse = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -41,18 +40,18 @@ public class NewsDaoImpl extends BaseDao<News> {
     }
 
     @Override
-    public List<News> getWhere(int id) {
-        HashMap map = new HashMap();
-        map.put("categoryId",id);
-        SqlSession session = SqlLink.getSqlSessionFactory().openSession();
-        NewsMapper newsMapper = session.getMapper(NewsMapper.class);
-        List<News> news = newsMapper.selectNews(map);
-        session.close();
-        return news;
+    public <E> List<News> getWhere(E e) {
+            HashMap map = new HashMap();
+            map.put("categoryId",e);
+            SqlSession session = SqlLink.getSqlSessionFactory().openSession();
+            NewsMapper newsMapper = session.getMapper(NewsMapper.class);
+            List<News> news = newsMapper.selectNews(map);
+            session.close();
+            return news;
     }
 
     @Override
-    public News getOne(int id) {
+    public <E> News getOne(E id) {
         HashMap map = new HashMap();
         map.put("id",id);
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();
@@ -61,6 +60,7 @@ public class NewsDaoImpl extends BaseDao<News> {
         session.close();
         return news.get(0);
     }
+
 
     public List<News> getTagNews(int id) {
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();

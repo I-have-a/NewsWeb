@@ -29,7 +29,14 @@
                 <%}%>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="login.jsp">登陆</a></li>
+                <%
+                    String nickname = (String) session.getAttribute("nickname");
+                    if (nickname != null){%>
+                    <li><%= nickname%></li>
+                    <li><a href="logout.jsp">退出</a></li>
+                <%}else{%>
+                    <li><a href="login.jsp">登陆</a></li>
+                <%}%>
                 <li><a href="signup.jsp">注册</a></li>
             </ul>
         </div>
