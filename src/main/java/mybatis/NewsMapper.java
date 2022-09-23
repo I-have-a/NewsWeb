@@ -2,14 +2,12 @@ package mybatis;
 
 import com.news.model.News;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface NewsMapper {
-    List<News> selectNews();
-
-    List<News> selectWhere(int id);
-
-    News getDetails(int id);
+    List<News> selectNews(HashMap map);
 
     List<News> Recommend();
 }

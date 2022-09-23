@@ -11,7 +11,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class NewsDaoImpl extends BaseDao<News> {
 
@@ -30,29 +32,34 @@ public class NewsDaoImpl extends BaseDao<News> {
 
     @Override
     public List<News> getAll() {
+        HashMap map = new HashMap();
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();
         NewsMapper newsMapper = session.getMapper(NewsMapper.class);
-        List<News> news = newsMapper.selectNews();
+        List<News> news = newsMapper.selectNews(map);
         session.close();
         return news;
     }
 
     @Override
     public List<News> getWhere(int id) {
+        HashMap map = new HashMap();
+        map.put("categoryId",id);
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();
         NewsMapper newsMapper = session.getMapper(NewsMapper.class);
-        List<News> news = newsMapper.selectWhere(id);
+        List<News> news = newsMapper.selectNews(map);
         session.close();
         return news;
     }
 
     @Override
     public News getOne(int id) {
+        HashMap map = new HashMap();
+        map.put("id",id);
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();
         NewsMapper newsMapper = session.getMapper(NewsMapper.class);
-        News news = newsMapper.getDetails(id);
+        List<News> news = newsMapper.selectNews(map);
         session.close();
-        return news;
+        return news.get(0);
     }
 
     public List<News> getTagNews(int id) {

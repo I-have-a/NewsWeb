@@ -11,17 +11,14 @@
     <select id="selectNews" resultMap="newsResultMap">
         select *
         from `news-sys`.News
-    </select>
-
-    <select id="selectWhere" resultMap="newsResultMap">
-        select *
-        from `news-sys`.News
-        where category_id = #{id};
-    </select>
-    <select id="getDetails" resultMap="newsResultMap">
-        select *
-        from `news-sys`.News
-        where id = #{id};
+        <where>
+            <if test="categoryId != null">
+                category_id = #{categoryId}
+            </if>
+            <if test="id != null">
+                id = #{id}
+            </if>
+        </where>
     </select>
 
     <select id="Recommend" resultMap="newsResultMap">
