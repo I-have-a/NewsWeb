@@ -2,6 +2,7 @@ package com.news.dao.Impl;
 
 import com.news.model.News;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface Base<T> {
@@ -10,4 +11,6 @@ public interface Base<T> {
     <E> List<T> getWhere(E e);
 
     <E> T getOne(E e);
+
+    void insert(HashMap map);
 }

@@ -25,6 +25,7 @@
 
     </delete>
     <insert id="insertUser">
-
+        insert into `news-sys`.user
+        VALUES (null, #{account},#{nickname},#{password},#{photo},#{birthDay},#{email},#{mabile},#{regDate},0);
     </insert>
 </mapper>

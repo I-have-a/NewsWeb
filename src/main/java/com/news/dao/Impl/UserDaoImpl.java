@@ -34,4 +34,12 @@ public class UserDaoImpl implements Base<User> {
         session.close();
         return user;
     }
+
+    @Override
+    public void insert(HashMap map) {
+        SqlSession session = SqlLink.getSqlSessionFactory().openSession();
+        UserMapper userMapper = session.getMapper(UserMapper.class);
+        userMapper.insertUser(map);
+        session.close();
+    }
 }

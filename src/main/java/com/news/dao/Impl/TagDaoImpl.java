@@ -5,6 +5,7 @@ import com.news.model.Tag;
 import mybatis.TagMapper;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class TagDaoImpl implements Base<Tag> {
@@ -25,5 +26,10 @@ public class TagDaoImpl implements Base<Tag> {
     @Override
     public <E> Tag getOne(E e) {
         return null;
+    }
+
+    @Override
+    public void insert(HashMap map) {
+
     }
 }

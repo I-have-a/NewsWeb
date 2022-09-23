@@ -9,4 +9,6 @@ public interface UserMapper {
     User getUser(HashMap map);
 
     List<User> getAllUser();
+
+    int insertUser(HashMap map);
 }

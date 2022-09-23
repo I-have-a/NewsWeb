@@ -5,6 +5,7 @@ import com.news.model.Category;
 import mybatis.CategoryMapper;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class CategoryDaoImpl implements Base<Category> {
@@ -25,6 +26,11 @@ public class CategoryDaoImpl implements Base<Category> {
     @Override
     public <E> Category getOne(E e) {
         return null;
+    }
+
+    @Override
+    public void insert(HashMap map) {
+
     }
 
 }

@@ -61,6 +61,11 @@ public class NewsDaoImpl implements Base<News> {
         return news.get(0);
     }
 
+    @Override
+    public void insert(HashMap map) {
+
+    }
+
 
     public List<News> getTagNews(int id) {
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();

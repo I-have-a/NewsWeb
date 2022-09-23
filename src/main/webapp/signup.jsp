@@ -41,15 +41,15 @@
     <h1>注册
         <small>已有账号，<a href="login.jsp">登录</a></small>
     </h1>
-    <form>
+    <form action="signup_Idea.jsp">
         <div class="form-group">
             <label>手机</label>
-            <input type="text" class="form-control">
+            <input type="text" name="phone" class="form-control">
         </div>
         <div class="form-group">
             <label>验证码</label>
             <div class="input-group">
-                <input type="text" class="form-control">
+                <input type="text" name="authCode" class="form-control">
                 <div class="input-group-btn">
                     <div class="btn btn-default">获取验证码</div>
                 </div>
@@ -57,7 +57,7 @@
         </div>
         <div class="form-group">
             <label>密码</label>
-            <input type="password" class="form-control">
+            <input type="password" name="password" class="form-control">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">注册</button>
