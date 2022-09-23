@@ -83,37 +83,7 @@
                     <div>举报电话：12377</div>
                 </div>
             </div>
-            <div class="side-bar-card">
-                <div class="card-title">24小时热闻</div>
-                <div class="card-body">
-                    <div class="list">
-                        <div class="item">
-                            <a class="title" href="#">人工智能时代的到来，把全世界的科技巨头和汽车厂商推向了研发自动驾驶技术的浪潮中。</a>
-                            <div class="desc">15k阅读　1k评论</div>
-                        </div>
-                        <div class="item">
-                            <a class="title" href="#">人工智能时代的到来，把全世界的科技巨头和汽车厂商推向了研发自动驾驶技术的浪潮中。</a>
-                            <div class="desc">15k阅读　1k评论</div>
-                        </div>
-                        <div class="item">
-                            <a class="title" href="#">人工智能时代的到来，把全世界的科技巨头和汽车厂商推向了研发自动驾驶技术的浪潮中。</a>
-                            <div class="desc">15k阅读　1k评论</div>
-                        </div>
-                        <div class="item">
-                            <a class="title" href="#">人工智能时代的到来，把全世界的科技巨头和汽车厂商推向了研发自动驾驶技术的浪潮中。</a>
-                            <div class="desc">15k阅读　1k评论</div>
-                        </div>
-                        <div class="item">
-                            <a class="title" href="#">人工智能时代的到来，把全世界的科技巨头和汽车厂商推向了研发自动驾驶技术的浪潮中。</a>
-                            <div class="desc">15k阅读　1k评论</div>
-                        </div>
-                        <div class="item">
-                            <a class="title" href="#">人工智能时代的到来，把全世界的科技巨头和汽车厂商推向了研发自动驾驶技术的浪潮中。</a>
-                            <div class="desc">15k阅读　1k评论</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <jsp:include page="common/24h.jsp" flush="true"></jsp:include>
         </div>
     </div>
 </div>

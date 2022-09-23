@@ -1,5 +1,6 @@
 <%@ page import="com.news.dao.Impl.NewsDaoImpl" %>
-<%@ page import="com.news.model.News" %><%--
+<%@ page import="com.news.model.News" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: 23686
   Date: 2022/9/16
@@ -60,7 +61,8 @@
             <div class="card-body">
                 <div class="list">
                     <%
-                        for (News news1 : newsDao.RecommendNews()) {%>
+                        List<News> newsList = newsDao.RecommendNews();
+                        for (News news1 : newsList) {%>
                             <div class="item clearfix">
                                 <a href="news.jsp?id=<%= news1.getId()%>">
                                     <div class="col-xs-5 no-padding-h"><img src="img/<%= news1.getImg()%>" alt="">
@@ -75,37 +77,7 @@
                 </div>
             </div>
         </div>
-        <div class="side-bar-card">
-            <div class="card-title">24小时热闻</div>
-            <div class="card-body">
-                <div class="list">
-                    <div class="item">
-                        <a class="title" href="#">人工智能时代的到来，把全世界的科技巨头和汽车厂商推向了研发自动驾驶技术的浪潮中。</a>
-                        <div class="desc">15k阅读　1k评论</div>
-                    </div>
-                    <div class="item">
-                        <a class="title" href="#">人工智能时代的到来，把全世界的科技巨头和汽车厂商推向了研发自动驾驶技术的浪潮中。</a>
-                        <div class="desc">15k阅读　1k评论</div>
-                    </div>
-                    <div class="item">
-                        <a class="title" href="#">人工智能时代的到来，把全世界的科技巨头和汽车厂商推向了研发自动驾驶技术的浪潮中。</a>
-                        <div class="desc">15k阅读　1k评论</div>
-                    </div>
-                    <div class="item">
-                        <a class="title" href="#">人工智能时代的到来，把全世界的科技巨头和汽车厂商推向了研发自动驾驶技术的浪潮中。</a>
-                        <div class="desc">15k阅读　1k评论</div>
-                    </div>
-                    <div class="item">
-                        <a class="title" href="#">人工智能时代的到来，把全世界的科技巨头和汽车厂商推向了研发自动驾驶技术的浪潮中。</a>
-                        <div class="desc">15k阅读　1k评论</div>
-                    </div>
-                    <div class="item">
-                        <a class="title" href="#">人工智能时代的到来，把全世界的科技巨头和汽车厂商推向了研发自动驾驶技术的浪潮中。</a>
-                        <div class="desc">15k阅读　1k评论</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <jsp:include page="common/24h.jsp" flush="true"></jsp:include>
     </div>
 </div>
 <jsp:include page="common/tail.jsp" flush="true"></jsp:include>

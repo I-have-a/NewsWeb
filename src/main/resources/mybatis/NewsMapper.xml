@@ -12,12 +12,14 @@
         select *
         from `news-sys`.News
         <where>
-            <if test="categoryId != null">
-                category_id = #{categoryId}
-            </if>
-            <if test="id != null">
-                id = #{id}
-            </if>
+            <choose>
+                <when test="categoryId != null">
+                    category_id = #{categoryId}
+                </when>
+                <when test="id != null">
+                    id = #{id}
+                </when>
+            </choose>
         </where>
     </select>
 
