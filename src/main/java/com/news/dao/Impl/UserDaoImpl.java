@@ -27,7 +27,7 @@ public class UserDaoImpl implements Base<User> {
     @Override
     public <E> User getOne(E e) {
         HashMap map = new HashMap();
-        map.put("account",e);
+        map.put("account", e);
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();
         UserMapper userMapper = session.getMapper(UserMapper.class);
         User user = userMapper.getUser(map);

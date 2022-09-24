@@ -15,9 +15,10 @@
             <%
                 NewsDaoImpl newsDao = new NewsDaoImpl();
                 List<News> newsList1 = newsDao.RecommendNews();
+                String contextPath = request.getContextPath();
                 for (News news1 : newsList1){%>
             <div class="item">
-                <a class="title" href="news.jsp?id=<%= news1.getId()%>"><%= news1.getTitle()%></a>
+                <a class="title" href="<%= contextPath%>/news.jsp?id=<%= news1.getId()%>"><%= news1.getTitle()%></a>
                 <div class="desc">15k阅读　1k评论</div>
             </div>
             <%}%>

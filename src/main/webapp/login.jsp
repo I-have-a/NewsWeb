@@ -43,12 +43,12 @@
     </h1>
     <form action="login_Idea.jsp" method="post">
         <div class="form-group">
-            <label>用户名/手机/邮箱</label>
-            <input type="text" name="account" class="form-control">
+            <label for="account">用户名/手机/邮箱</label>
+            <input type="text" name="account" id="account" class="form-control">
         </div>
         <div class="form-group">
-            <label>密码</label>
-            <input type="password" name="password" class="form-control">
+            <label for="password">密码</label>
+            <input type="password" name="password" id="password" class="form-control">
         </div>
         <% String err = (String) request.getAttribute("err");%>
         <p><%= err != null ? err : ""%></p>

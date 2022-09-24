@@ -13,10 +13,7 @@
     UserDaoImpl userDao = new UserDaoImpl();
     User user = userDao.getOne(account);
     if (user != null && password.equals(user.getPassword())){
-        session.setAttribute("account",user.getAccount());
-        session.setAttribute("photo",user.getPhoto());
-        session.setAttribute("password",user.getPassword());
-        session.setAttribute("nickname",user.getNickname());
+        session.setAttribute("user",user.getNickname());
         response.sendRedirect("index.jsp");
     }else {
         request.setAttribute("err","账号或密码输入错误");

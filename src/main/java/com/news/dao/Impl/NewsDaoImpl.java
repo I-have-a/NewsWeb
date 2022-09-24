@@ -41,19 +41,19 @@ public class NewsDaoImpl implements Base<News> {
 
     @Override
     public <E> List<News> getWhere(E e) {
-            HashMap map = new HashMap();
-            map.put("categoryId",e);
-            SqlSession session = SqlLink.getSqlSessionFactory().openSession();
-            NewsMapper newsMapper = session.getMapper(NewsMapper.class);
-            List<News> news = newsMapper.selectNews(map);
-            session.close();
-            return news;
+        HashMap map = new HashMap();
+        map.put("categoryId", e);
+        SqlSession session = SqlLink.getSqlSessionFactory().openSession();
+        NewsMapper newsMapper = session.getMapper(NewsMapper.class);
+        List<News> news = newsMapper.selectNews(map);
+        session.close();
+        return news;
     }
 
     @Override
     public <E> News getOne(E id) {
         HashMap map = new HashMap();
-        map.put("id",id);
+        map.put("id", id);
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();
         NewsMapper newsMapper = session.getMapper(NewsMapper.class);
         List<News> news = newsMapper.selectNews(map);

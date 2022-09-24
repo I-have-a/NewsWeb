@@ -43,21 +43,21 @@
     </h1>
     <form action="signup_Idea.jsp">
         <div class="form-group">
-            <label>手机</label>
-            <input type="text" name="phone" class="form-control">
+            <label for="phone">手机</label>
+            <input type="text" name="phone" id="phone" class="form-control">
         </div>
         <div class="form-group">
-            <label>验证码</label>
+            <label for="authCode">验证码</label>
             <div class="input-group">
-                <input type="text" name="authCode" class="form-control">
+                <input type="text" name="authCode" id="authCode" class="form-control">
                 <div class="input-group-btn">
                     <div class="btn btn-default">获取验证码</div>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <label>密码</label>
-            <input type="password" name="password" class="form-control">
+            <label for="password">密码</label>
+            <input type="password" name="password" id="password" class="form-control">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">注册</button>
