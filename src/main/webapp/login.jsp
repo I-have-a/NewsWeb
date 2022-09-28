@@ -41,7 +41,7 @@
     <h1>登录
         <small>没有账号？<a href="signup.jsp">注册</a></small>
     </h1>
-    <form action="login_Idea.jsp" method="post">
+    <form action="loginServlet" method="post">
         <div class="form-group">
             <label for="account">用户名/手机/邮箱</label>
             <input type="text" name="account" id="account" class="form-control">

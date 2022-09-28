@@ -41,7 +41,7 @@
     <h1>注册
         <small>已有账号，<a href="login.jsp">登录</a></small>
     </h1>
-    <form action="signup_Idea.jsp">
+    <form action="signup_Idea.jsp" method="post">
         <div class="form-group">
             <label for="phone">手机</label>
             <input type="text" name="phone" id="phone" class="form-control">

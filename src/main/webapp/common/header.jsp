@@ -1,6 +1,7 @@
 <%@ page import="com.news.dao.Impl.CategoryDaoImpl" %>
 <%@ page import="com.news.model.Category" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="com.news.model.User" %><%--
   Created by IntelliJ IDEA.
   User: 23686
   Date: 2022/9/21
@@ -30,10 +31,11 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <%
-                    String nickname = (String) session.getAttribute("nickname");
-                    if (nickname != null){
+                    User user = (User) session.getAttribute("user");
+                    if (user != null){
                 %>
-                        <li><a><%= nickname%></a></li>
+                        <li><a><img class="img-circle" width="40px" src="img/photos/<%= user.getPhoto()%>"></a></li>
+                        <li><a><%= user.getNickname()%></a></li>
                         <li><a href="logout.jsp">退出</a></li>
                     <%}else{%>
                         <li><a href="login.jsp">登陆</a></li>

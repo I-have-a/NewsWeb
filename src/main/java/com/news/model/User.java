@@ -12,7 +12,7 @@ public class User {
     private String email;//邮箱
     private String mobile;//电话号码
     private Date regDate;//注册时间
-    private String forBidden;//
+    private boolean forBidden;//是否封禁
 
     public User() {
     }
@@ -105,11 +105,11 @@ public class User {
         this.regDate = regDate;
     }
 
-    public String getForBidden() {
+    public boolean getForBidden() {
         return forBidden;
     }
 
-    public void setForBidden(String forBidden) {
-        this.forBidden = forBidden;
+    public void setForBidden(int forBidden) {
+        this.forBidden = forBidden == 0;
     }
 }
