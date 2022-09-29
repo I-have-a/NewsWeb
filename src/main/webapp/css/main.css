@@ -134,6 +134,7 @@ img, .side-bar .list-group-item, .side-bar-card {
     padding: 50px 0;
     text-align: center;
     color: #999999;
+    margin-left: -60px;
 }
 
 .container-small {
@@ -143,11 +144,18 @@ img, .side-bar .list-group-item, .side-bar-card {
 .btn-primary {
     background-color: #EA0C3C;
     border-color: #db0d3a;
+    width: 200px;
+    margin-top: 34px;
+    margin-left: 39px;
 }
 
 .btn-primary:hover {
     background-color: #d50c37;
     border-color: #d50c37;
+}
+.last{
+    margin-left: 47px;
+    margin-top: 45px;
 }
 
 /*当toggle-checkbox勾选时，它下面的兄弟的样式，!important使优先级最高*/
@@ -167,4 +175,78 @@ img, .side-bar .list-group-item, .side-bar-card {
 
 #toggle-label:hover {
     color: #333333;
+}
+input.form-control {
+    width: 393px;
+}
+
+
+.code
+{
+    font-family:Arial;
+    font-style:italic;
+    color:blue;
+    font-size:30px;
+    border:0;
+    padding:2px 3px;
+    letter-spacing:3px;
+    font-weight:bolder;
+    float:left;
+    cursor:pointer;
+    width:150px;
+    height:50px;
+    line-height:60px;
+    text-align:center;
+    vertical-align:middle;
+    background-color:#D8B7E3;
+}
+span {
+    text-decoration:none;
+    font-size:12px;
+    color:#288bc4;
+    padding-left:10px;
+}
+
+span:hover {
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+
+input#inputCode {
+    position: relative;
+    top: 20px;
+    left: -2px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+input[type="button"] {
+    position: relative;
+    left: 34px;
+    top: -6px;
+
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+    position: relative;
+    top: 26px;
+    left: -85px;
+}
+label.xrequired:before {
+    content: '* ';
+    color: red;
+}
+img#eyebtn {
+    position: relative;
+    top: -32px;
+    left: 350px;
+}
+img#eyebtn_1 {
+    position: relative;
+    top: -31px;
+    left: 349px;
 }

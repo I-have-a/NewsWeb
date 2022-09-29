@@ -1,11 +1,11 @@
+<%@ page import="java.util.List" %>
 <%@ page import="com.news.dao.Impl.CategoryDaoImpl" %>
 <%@ page import="com.news.model.Category" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.news.model.User" %><%--
   Created by IntelliJ IDEA.
-  User: 23686
-  Date: 2022/9/21
-  Time: 15:38
+  User: 41150
+  Date: 2022-09-21
+  Time: 16:31
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -20,28 +20,31 @@
         <div class="hidden-xs">
             <ul class="nav navbar-nav">
                 <%
-                    String categoryNum = request.getParameter("category");
+                    String category = request.getParameter("category"); // 获取新闻分类参数
+
+                    // 调用Dao，获取新闻分类列表
                     CategoryDaoImpl categoryDao = new CategoryDaoImpl();
-                    List<Category> categories = categoryDao.getAll();
+                    List<Category> categoryList = categoryDao.getAll();
+
+                    //获取session中保存的账户信息
+                    User user = (User) session.getAttribute("user");
                 %>
-                <li <% if (categoryNum == null){%>class="active"<% }%>><a href="index.jsp">首页</a></li>
-                <% for (Category category : categories) {%>
-                <li <% if (categoryNum != null && Integer.parseInt(categoryNum) == category.getId()){%>class="active"<% }%>><a href="index.jsp?category=<%= category.getId()%>"><%=category.getName()%></a></li>
+                <li <%if(category==null){%> class="active"<%}%>><a href="index.jsp">首页</a></li>
+                <% for(Category c: categoryList){%>
+                    <li <%if(category!=null && c.getId() == Integer.parseInt(category)){%>class="active"<%}%>><a href="index.jsp?category=<%=c.getId()%>"><%=c.getName()%></a></li>
                 <%}%>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <%
-                    User user = (User) session.getAttribute("user");
-                    if (user != null){
-                %>
-                        <li><a><img class="img-circle" width="40px" src="img/photos/<%= user.getPhoto()%>"></a></li>
-                        <li><a><%= user.getNickname()%></a></li>
-                        <li><a href="logout.jsp">退出</a></li>
-                    <%}else{%>
-                        <li><a href="login.jsp">登陆</a></li>
-                    <%}%>
+                <%if(user==null){%>
+                    <li><a href="login.jsp">登录</a></li>
+                <%}else{%>
+                    <li><a href="#"><img class="img-circle" width="40px" src="img/photos/<%=user.getPhoto()%>" alt=""></a></li>
+                    <li><a href="#"><%=user.getNickname()%></a></li>
+                    <li><a href="logout.jsp">退出</a></li>
+                <%}%>
                 <li><a href="signup.jsp">注册</a></li>
             </ul>
         </div>
     </div>
 </div>
+

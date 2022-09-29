@@ -11,8 +11,8 @@
 <head>
     <meta charset="UTF-8">
     <title>注册</title>
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <div class="navbar navbar-default">
@@ -39,34 +39,44 @@
 </div>
 <div class="container container-small">
     <h1>注册
-        <small>已有账号，<a href="login.jsp">登录</a></small>
+        <small>已有帐号，<a href="logout.jsp">登录</a></small>
     </h1>
-    <form action="signup_Idea.jsp" method="post">
+    <form action="signupServlet" method="post">
         <div class="form-group">
-            <label for="phone">手机</label>
-            <input type="text" name="phone" id="phone" class="form-control">
+            <label class="xrequired" for="account">账号</label>
+            <input type="text" class="form-control" id="account">
+            <span style="display: none; color: red" id="userName_err">账号已存在</span>
+            <span style="display: none; color: #1b6d85" id="userName_err2">账号不符合规范哦：账号由8位以上13位以下数字、字符或下划线组成</span>
+            <br>
+            <label class="xrequired" for="password">密码</label>
+            <input type="text" class="form-control" id="password">
         </div>
         <div class="form-group">
-            <label for="authCode">验证码</label>
+            <label for="password_1">确认密码</label>
+            <input type="password" class="form-control" id="password_1">
+        </div>
+        <div class="form-group">
+            <label for="email">邮箱</label>
+            <input type="password" class="form-control" id="email">
+        </div>
+        <div class="form-group">
+            <label for="emailE">验证码</label>
             <div class="input-group">
-                <input type="text" name="authCode" id="authCode" class="form-control">
+                <input type="text" class="form-control" id="emailE">
                 <div class="input-group-btn">
                     <div class="btn btn-default">获取验证码</div>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <label for="password">密码</label>
-            <input type="password" name="password" id="password" class="form-control">
+            <button type="submit" class="btn btn-primary btn-block" disabled="disabled" id="register">注册</button>
         </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">注册</button>
-        </div>
-        <div class="form-group">
+        <div class="form-group last">
             注册极客开发者头条即代表您同意<a href="#">极客开发者服务条款</a>
         </div>
     </form>
 </div>
 <jsp:include page="common/tail.jsp" flush="true"></jsp:include>
 </body>
+<script src="js/signup.js"></script>
 </html>
