@@ -1,7 +1,5 @@
 package com.news.dao.Impl;
 
-import com.news.model.News;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,5 +10,5 @@ public interface Base<T> {
 
     <E> T getOne(E e);
 
-    void insert(HashMap map);
+    int insert(HashMap map);
 }

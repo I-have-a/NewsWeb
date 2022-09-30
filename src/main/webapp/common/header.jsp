@@ -29,18 +29,22 @@
                     //获取session中保存的账户信息
                     User user = (User) session.getAttribute("user");
                 %>
-                <li <%if(category==null){%> class="active"<%}%>><a href="index.jsp">首页</a></li>
-                <% for(Category c: categoryList){%>
-                    <li <%if(category!=null && c.getId() == Integer.parseInt(category)){%>class="active"<%}%>><a href="index.jsp?category=<%=c.getId()%>"><%=c.getName()%></a></li>
+                <li <%if (category == null) {%> class="active"<%}%>><a href="index.jsp">首页</a></li>
+                <% for (Category c : categoryList) {%>
+                <li <%if(category!=null && c.getId() == Integer.parseInt(category)){%>class="active"<%}%>><a
+                        href="index.jsp?category=<%=c.getId()%>"><%=c.getName()%>
+                </a></li>
                 <%}%>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <%if(user==null){%>
-                    <li><a href="login.jsp">登录</a></li>
-                <%}else{%>
-                    <li><a href="#"><img class="img-circle" width="40px" src="img/photos/<%=user.getPhoto()%>" alt=""></a></li>
-                    <li><a href="#"><%=user.getNickname()%></a></li>
-                    <li><a href="logout.jsp">退出</a></li>
+                <%if (user == null) {%>
+                <li><a href="login.jsp">登录</a></li>
+                <%} else {%>
+                <li><a href="#"><img class="img-circle" width="40px" src="img/photos/<%=user.getPhoto()%>" alt=""></a>
+                </li>
+                <li><a href="#"><%=user.getNickname()%>
+                </a></li>
+                <li><a href="logout.jsp">退出</a></li>
                 <%}%>
                 <li><a href="signup.jsp">注册</a></li>
             </ul>

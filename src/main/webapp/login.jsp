@@ -11,8 +11,8 @@
 <head>
     <meta charset="UTF-8">
     <title>登陆</title>
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <div class="navbar navbar-default">
@@ -51,7 +51,8 @@
             <input type="password" name="password" id="password" class="form-control">
         </div>
         <% String err = (String) request.getAttribute("err");%>
-        <p><%= err != null ? err : ""%></p>
+        <p><%= err != null ? err : ""%>
+        </p>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">登录</button>
         </div>

@@ -13,6 +13,9 @@ public class News {
     private int editor;//编辑（关联管理员）
     private int clickCount;//点击次数
 
+    public News() {
+    }
+
     public int getId() {
         return id;
     }
@@ -83,9 +86,6 @@ public class News {
 
     public void setClickCount(int clickCount) {
         this.clickCount = clickCount;
-    }
-
-    public News() {
     }
 
     @Override

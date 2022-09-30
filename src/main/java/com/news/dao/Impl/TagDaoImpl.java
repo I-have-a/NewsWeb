@@ -29,7 +29,7 @@ public class TagDaoImpl implements Base<Tag> {
     }
 
     @Override
-    public void insert(HashMap map) {
-
+    public int insert(HashMap map) {
+        return 0;
     }
 }

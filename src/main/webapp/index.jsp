@@ -3,6 +3,7 @@
 <%@ page import="com.news.dao.Impl.TagDaoImpl" %>
 <%@ page import="com.news.model.News" %>
 <%@ page import="com.news.dao.Impl.NewsDaoImpl" %>
+<%@ page autoFlush="true" %>
 <%--
   Created by IntelliJ IDEA.
   User: 23686
@@ -20,20 +21,22 @@
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-<jsp:include page = "common/header.jsp" flush = "true"></jsp:include>
-    <%
-        String tagNum = request.getParameter("tag");
-        String categoryNum = request.getParameter("category");
-    %>
+<jsp:include page="common/header.jsp" flush="true"></jsp:include>
+<%
+    String tagNum = request.getParameter("tag");
+    String categoryNum = request.getParameter("category");
+%>
 <div class="container">
     <div class="row">
         <div class="col-sm-2">
             <div class="list-group side-bar hidden-xs">
-                <%  TagDaoImpl tagDao = new TagDaoImpl();
+                <% TagDaoImpl tagDao = new TagDaoImpl();
                     List<Tag> tags = tagDao.getAll();
                     for (Tag tag : tags) {%>
-                        <a href="index.jsp?tag=<%= tag.getId()%>" class="list-group-item <%if (tagNum != null && tag.getId() == Integer.parseInt(tagNum)){%>active<% }%>"><%=tag.getName()%></a>
-                <%  }%>
+                <a href="index.jsp?tag=<%= tag.getId()%>"
+                   class="list-group-item <%if (tagNum != null && tag.getId() == Integer.parseInt(tagNum)){%>active<% }%>"><%=tag.getName()%>
+                </a>
+                <% }%>
             </div>
         </div>
         <div class="col-sm-7">

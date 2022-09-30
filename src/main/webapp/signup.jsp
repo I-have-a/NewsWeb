@@ -44,26 +44,29 @@
     <form action="signupServlet" method="post">
         <div class="form-group">
             <label class="xrequired" for="account">账号</label>
-            <input type="text" class="form-control" id="account">
+            <input type="text" class="form-control" id="account" name="account">
             <span style="display: none; color: red" id="userName_err">账号已存在</span>
-            <span style="display: none; color: #1b6d85" id="userName_err2">账号不符合规范哦：账号由8位以上13位以下数字、字符或下划线组成</span>
+            <span style="display: none; color: #1b6d85" id="userName_err2">账号不符合规范哦：账号由8~13位数字、字母或下划线组成</span>
             <br>
             <label class="xrequired" for="password">密码</label>
-            <input type="text" class="form-control" id="password">
+            <input type="password" class="form-control" id="password" name="password">
+            <span style="display: none; color: #1b6d85" id="password_err">密码不符合规范哦：由8~13位数字、字母或下划线组成，字母至少一位</span>
         </div>
         <div class="form-group">
             <label for="password_1">确认密码</label>
             <input type="password" class="form-control" id="password_1">
+            <span style="display: none; color: red" id="password_1_err">两次密码输入不一致</span>
         </div>
         <div class="form-group">
-            <label for="email">邮箱</label>
-            <input type="password" class="form-control" id="email">
+            <label for="email">QQ邮箱</label>
+            <input type="text" class="form-control" id="email" name="email">
+            <span style="display: none; color: #1b6d85" id="email_err">暂时只支持qq邮箱</span>
         </div>
         <div class="form-group">
             <label for="emailE">验证码</label>
             <div class="input-group">
                 <input type="text" class="form-control" id="emailE">
-                <div class="input-group-btn">
+                <div class="input-group-btn" id="getEmail">
                     <div class="btn btn-default">获取验证码</div>
                 </div>
             </div>

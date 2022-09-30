@@ -7,6 +7,10 @@ import java.util.Date;
  * 时间格式化
  */
 public class TimeFormat {
+    public static String getFormatTime(Date date, String Sdf) {
+        return (new SimpleDateFormat(Sdf)).format(date);
+    }
+
     /**
      * 转化为（以当前时间为终点）间隔时间，注意不能早于当前时间
      *
@@ -57,9 +61,5 @@ public class TimeFormat {
             interval = "0";
         }
         return interval;
-    }
-
-    public static String getFormatTime(Date date, String Sdf) {
-        return (new SimpleDateFormat(Sdf)).format(date);
     }
 }

@@ -9,6 +9,7 @@ import java.io.InputStream;
 
 public class SqlLink {
     private static SqlSessionFactory build;
+
     static {
         try {
             String re = "mybatis-config.xml";
@@ -18,7 +19,8 @@ public class SqlLink {
             e.printStackTrace();
         }
     }
-    public static SqlSessionFactory getSqlSessionFactory(){
+
+    public static SqlSessionFactory getSqlSessionFactory() {
         return build;
     }
 }

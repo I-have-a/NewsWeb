@@ -29,8 +29,8 @@ public class CategoryDaoImpl implements Base<Category> {
     }
 
     @Override
-    public void insert(HashMap map) {
-
+    public int insert(HashMap map) {
+        return 0;
     }
 
 }

@@ -4,9 +4,12 @@ import com.news.Tool.Md5Util;
 import com.news.dao.Impl.UserDaoImpl;
 import com.news.model.User;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/LoginServlet")
@@ -17,18 +20,18 @@ public class LoginServlet extends HttpServlet {
         String password = Md5Util.md5(request.getParameter("password"));
         UserDaoImpl userDao = new UserDaoImpl();
         User user = userDao.getOne(account);
-        if (user != null && password.equals(user.getPassword())){
-            if(user.getForBidden()){
+        if (user != null && password.equals(user.getPassword())) {
+            if (user.getForBidden()) {
                 HttpSession session = request.getSession();
-                session.setAttribute("user",user);
+                session.setAttribute("user", user);
                 response.sendRedirect("index.jsp");
-            }else {
-                request.setAttribute("forbid","账号已被封禁");
-                request.getRequestDispatcher("login.jsp").forward(request,response);
+            } else {
+                request.setAttribute("forbid", "账号已被封禁");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
-        }else {
-            request.setAttribute("err","账号或密码输入错误");
-            request.getRequestDispatcher("login.jsp").forward(request,response);
+        } else {
+            request.setAttribute("err", "账号或密码输入错误");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 

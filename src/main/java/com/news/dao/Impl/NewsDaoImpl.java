@@ -62,8 +62,8 @@ public class NewsDaoImpl implements Base<News> {
     }
 
     @Override
-    public void insert(HashMap map) {
-
+    public int insert(HashMap map) {
+        return 0;
     }
 
 
