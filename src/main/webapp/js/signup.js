@@ -1,7 +1,7 @@
-var accountflog = false;
-var passwordflog = false;
-var passwordConfirmFlog = false;
-var emailflog = false;
+var accountflog = false;//账号判定
+var passwordflog = false;//密码判定
+var passwordConfirmFlog = false;//密码对比判定
+var emailflog = false;//邮箱判定
 
 var account = document.getElementById("account")
 var password = document.getElementById("password")
@@ -18,12 +18,17 @@ account.onblur = function accountOnblur() {
         accountflog = false
         return
     }
+    /*
+        ajax数据
+     */
     var xhttp;
     xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 
+    //发起请求
     xhttp.open("GET", "http://localhost:8080/news_sys_war_exploded/selectUserServlet?userName=" + userName);
     xhttp.send();
 
+    //响应请求
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText == "true") {
@@ -36,6 +41,7 @@ account.onblur = function accountOnblur() {
             document.getElementById("emailE").value = this.responseText
         }
     };
+    //判定一次表单信息
     Confirm()
 }
 
@@ -66,30 +72,47 @@ email.onblur = function emailOnblur() {
     var reg = /^[1-9]([0-9]{4,10})@qq\.com$/;
     if (reg.test(this.value)) {
         document.getElementById("email_err").style.display = "none"
-        emailflog = true
     } else {
         document.getElementById("email_err").style.display = ""
         emailflog = false
+        return
     }
-    Confirm()
-}
-
-var getEmail = document.getElementById("getEmail")
-getEmail.onclick = function () {
-    var email = document.getElementById("email").value
     var xhttp;
     xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-    console.log("------------" + email + "-------------")
-    xhttp.open("GET", "http://localhost:8080/news_sys_war_exploded/getEmailServlet?email=" + email);
+
+    xhttp.open("GET", "http://localhost:8080/news_sys_war_exploded/selectEmailServlet?email=" + this.value);
     xhttp.send();
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText)
+            if (this.responseText == "true") {
+                document.getElementById("email_err1").style.display = ""
+                emailflog = false
+            } else {
+                document.getElementById("email_err1").style.display = "none"
+                emailflog = true
+            }
         }
     };
+    Confirm()
 }
 
+var getEmail = document.getElementById("getEmail")
+/*
+    获取验证码
+ */
+getEmail.onclick = function () {
+    var email = document.getElementById("email").value
+    var xhttp;
+    xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+    xhttp.open("GET", "http://localhost:8080/news_sys_war_exploded/getEmailServlet?email=" + email);
+    xhttp.send();
+}
+
+/**
+ * 表单总判定
+ * @constructor
+ */
 function Confirm() {
     if (accountflog && passwordflog && passwordConfirmFlog && emailflog) {
         document.getElementById("register").removeAttribute("disabled")

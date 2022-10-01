@@ -19,17 +19,17 @@ public class TagDaoImpl implements Base<Tag> {
     }
 
     @Override
-    public <E> List<Tag> getWhere(E e) {
+    public <E> List<Tag> getSingleWhere(String k, E e) {
         return null;
     }
 
     @Override
-    public <E> Tag getOne(E e) {
+    public <E> Tag getSingleOne(String k , E e) {
         return null;
     }
 
     @Override
-    public int insert(HashMap map) {
+    public int insert(Tag tag) {
         return 0;
     }
 }

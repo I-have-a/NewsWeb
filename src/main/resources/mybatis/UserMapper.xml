@@ -13,8 +13,21 @@
     <select id="getUser" resultMap="userResultMap">
         select *
         from `news-sys`.user
-        where user.account = #{account}
+        <where>
+            <choose>
+                <when test="account != null">
+                    user.account = #{account}
+                </when>
+                <when test="email != null">
+                    user.email = #{email}
+                </when>
+                <when test="mobile != null">
+                    user.mobile = #{mobile}
+                </when>
+            </choose>
+        </where>
     </select>
+
     <select id="getAllUser" resultType="User">
 
     </select>

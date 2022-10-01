@@ -29,37 +29,29 @@ public class TimeFormat {
 
         long second = millisecond / 1000;
 
-        if (second <= 0) {
-            second = 0;
-        }
-        if (second == 0) {
-            interval = "刚刚";
-        } else if (second < 30) {
-            interval = second + "秒以前";
-        } else if (second >= 30 && second < 60) {
-            interval = "半分钟前";
-        } else if (second >= 60 && second < 60 * 60) {//大于1分钟 小于1小时
+        if (second <= 0) second = 0;
+        if (second == 0) interval = "刚刚";
+        else if (second < 30) interval = second + "秒以前";
+        else if (second >= 30 && second < 60) interval = "半分钟前";
+        else if (second >= 60 && second < 60 * 60) {//大于1分钟 小于1小时
             long minute = second / 60;
             interval = minute + "分钟前";
         } else if (second >= 60 * 60 && second < 60 * 60 * 24) {//大于1小时 小于24小时
             long hour = (second / 60) / 60;
-            if (hour <= 6) {
-                interval = hour + "小时前";
-            } else {
+            if (hour <= 6) interval = hour + "小时前";
+            else
                 interval = String.format("%td", date).equals(String.format("%td", new Date())) ? "今天" : "昨天" + getFormatTime(date, "HH:mm");
-            }
-        } else if (second >= 60 * 60 * 24 && second <= 60 * 60 * 24 * 2) {//大于1D 小于2D
-            interval = "昨天" + getFormatTime(date, "HH:mm");
-        } else if (second >= 60 * 60 * 24 * 2 && second <= 60 * 60 * 24 * 7) {//大于2D小时 小于 7天
+        } else //大于1D 小于2D
+            if (second >= 60 * 60 * 24 && second <= 60 * 60 * 24 * 2) interval = "昨天" + getFormatTime(date, "HH:mm");
+            else if (second >= 60 * 60 * 24 * 2 && second <= 60 * 60 * 24 * 7) {//大于2D小时 小于 7天
             long day = ((second / 60) / 60) / 24;
             interval = day + "天前";
-        } else if (second <= 60 * 60 * 24 * 365 && second >= 60 * 60 * 24 * 7) {//大于7天小于365天
-            interval = getFormatTime(date, "MM-dd HH:mm");
-        } else if (second >= 60 * 60 * 24 * 365) {//大于365天
-            interval = getFormatTime(date, "yyyy-MM-dd HH:mm");
-        } else {
-            interval = "0";
-        }
+        } else //大于7天小于365天
+                if (second <= 60 * 60 * 24 * 365 && second >= 60 * 60 * 24 * 7)
+                    interval = getFormatTime(date, "MM-dd HH:mm");
+                else //大于365天
+                    if (second >= 60 * 60 * 24 * 365) interval = getFormatTime(date, "yyyy-MM-dd HH:mm");
+                    else interval = "0";
         return interval;
     }
 }

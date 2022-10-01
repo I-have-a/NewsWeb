@@ -19,17 +19,17 @@ public class CategoryDaoImpl implements Base<Category> {
     }
 
     @Override
-    public <E> List<Category> getWhere(E e) {
+    public <E> List<Category> getSingleWhere(String k , E e) {
         return null;
     }
 
     @Override
-    public <E> Category getOne(E e) {
+    public <E> Category getSingleOne(String k, E e) {
         return null;
     }
 
     @Override
-    public int insert(HashMap map) {
+    public int insert(Category category) {
         return 0;
     }
 

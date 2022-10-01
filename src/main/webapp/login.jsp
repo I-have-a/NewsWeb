@@ -51,8 +51,7 @@
             <input type="password" name="password" id="password" class="form-control">
         </div>
         <% String err = (String) request.getAttribute("err");%>
-        <p><%= err != null ? err : ""%>
-        </p>
+        <p><%= err != null ? err : ""%></p>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">登录</button>
         </div>

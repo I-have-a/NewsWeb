@@ -43,7 +43,7 @@
     <div class="col-xs-8">
         <%
             NewsDaoImpl newsDao = new NewsDaoImpl();
-            News news = newsDao.getOne(Integer.parseInt(request.getParameter("id")));
+            News news = newsDao.getSingleOne("id",Integer.parseInt(request.getParameter("id")));
         %>
         <h1 class="news-title"><%= news.getTitle()%>
         </h1>

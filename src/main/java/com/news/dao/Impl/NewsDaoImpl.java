@@ -16,6 +16,11 @@ import java.util.List;
 
 public class NewsDaoImpl implements Base<News> {
 
+    /**
+     * 修改新闻的日期属性
+     * @param news 要修改的新闻对象
+     * @return 从数据库获取的新闻发布日期
+     */
     public String pundateToString(News news) {
         DateFormat parse = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date pubdate = news.getPubdate();
@@ -40,9 +45,9 @@ public class NewsDaoImpl implements Base<News> {
     }
 
     @Override
-    public <E> List<News> getWhere(E e) {
+    public <E> List<News> getSingleWhere(String k, E e) {
         HashMap map = new HashMap();
-        map.put("categoryId", e);
+        map.put(k, e);
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();
         NewsMapper newsMapper = session.getMapper(NewsMapper.class);
         List<News> news = newsMapper.selectNews(map);
@@ -51,9 +56,9 @@ public class NewsDaoImpl implements Base<News> {
     }
 
     @Override
-    public <E> News getOne(E id) {
+    public <E> News getSingleOne(String k, E id) {
         HashMap map = new HashMap();
-        map.put("id", id);
+        map.put(k, id);
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();
         NewsMapper newsMapper = session.getMapper(NewsMapper.class);
         List<News> news = newsMapper.selectNews(map);
@@ -62,7 +67,7 @@ public class NewsDaoImpl implements Base<News> {
     }
 
     @Override
-    public int insert(HashMap map) {
+    public int insert(News news) {
         return 0;
     }
 

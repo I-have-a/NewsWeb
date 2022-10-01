@@ -10,5 +10,5 @@ public interface UserMapper {
 
     List<User> getAllUser();
 
-    int insertUser(HashMap map);
+    int insertUser(User user);
 }

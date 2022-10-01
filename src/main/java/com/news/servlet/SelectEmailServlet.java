@@ -3,23 +3,21 @@ package com.news.servlet;
 import com.news.dao.Impl.UserDaoImpl;
 import com.news.model.User;
 
-import javax.servlet.ServletException;
+import javax.servlet.*;
+import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /*
-    账号验证
+    邮箱验证
  */
-@WebServlet("/selectUserServlet")
-public class SelectUserServlet extends HttpServlet {
+@WebServlet("/selectEmailServlet")
+public class SelectEmailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String userName = request.getParameter("userName");
+        String email = request.getParameter("email");
         UserDaoImpl userDao = new UserDaoImpl();
-        User user = userDao.getSingleOne("account",userName);
+        User user = userDao.getSingleOne("email",email);
         if (user != null) {
             response.getWriter().write("true");
         }
@@ -27,6 +25,6 @@ public class SelectUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doGet(request, response);
+
     }
 }

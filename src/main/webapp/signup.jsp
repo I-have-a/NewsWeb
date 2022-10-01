@@ -61,16 +61,19 @@
             <label for="email">QQ邮箱</label>
             <input type="text" class="form-control" id="email" name="email">
             <span style="display: none; color: #1b6d85" id="email_err">暂时只支持qq邮箱</span>
+            <span style="display: none; color: red" id="email_err1">此邮箱已绑定账号，请更换</span>
         </div>
         <div class="form-group">
             <label for="emailE">验证码</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="emailE">
+                <input type="text" class="form-control" id="emailE" name="emailE">
                 <div class="input-group-btn" id="getEmail">
                     <div class="btn btn-default">获取验证码</div>
                 </div>
             </div>
         </div>
+        <% String err = (String) request.getAttribute("emailE_err");%>
+        <p style="color: red"><%= err != null ? err : ""%></p>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block" disabled="disabled" id="register">注册</button>
         </div>

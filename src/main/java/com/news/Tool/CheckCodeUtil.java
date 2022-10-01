@@ -78,9 +78,9 @@ public class CheckCodeUtil {
     /**
      * 生成随机验证码文件,并返回验证码值 (生成图片形式，用的较少)
      *
-     * @param w
-     * @param h
-     * @param outputFile
+     * @param w 宽
+     * @param h 高
+     * @param outputFile 输出对象
      * @param verifySize
      * @return
      * @throws IOException

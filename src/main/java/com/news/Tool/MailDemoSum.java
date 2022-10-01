@@ -24,10 +24,10 @@ import java.util.Random;
  */
 public class MailDemoSum {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
 
         // 发送邮件（文本）
-        //   testMail();
+        //   textMail();
 
         // 发送邮件（图片）
         //   imageMail();
@@ -294,9 +294,9 @@ public class MailDemoSum {
      *
      * @param Em 用户邮箱
      * @return 浏览器校验码
-     * @throws Exception
+     * @throws Exception 管他什么异常，抛就对了
      */
-    public static String testMail(String Em) throws Exception {
+    public static String textMail(String Em) throws Exception {
         // 给用户发送邮件的邮箱
         final String from = "2368688782@qq.com";
         // 邮箱的用户名

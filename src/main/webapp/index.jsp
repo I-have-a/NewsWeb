@@ -49,7 +49,7 @@
                         newsList = newsDao.getTagNews(Integer.parseInt(tagNum));
                     }
                     if (categoryNum != null) {
-                        newsList = newsDao.getWhere(Integer.parseInt(categoryNum));
+                        newsList = newsDao.getSingleWhere("categoryId",Integer.parseInt(categoryNum));
                     }
                     for (News news : newsList) {
                 %>

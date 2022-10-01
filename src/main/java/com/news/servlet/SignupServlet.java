@@ -1,5 +1,6 @@
 package com.news.servlet;
 
+import com.news.Tool.Md5Util;
 import com.news.dao.Impl.UserDaoImpl;
 import com.news.model.User;
 
@@ -8,31 +9,37 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 @WebServlet("/signupServlet")
 public class SignupServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String account = request.getParameter("account");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        HashMap map = new HashMap();
-        map.put("account",account);
-        map.put("password",password);
-        map.put("email",email);
-        map.put("nickname","用户"+account);
-        map.put("photo","1.jpg");
-        map.put("birthDay",null);
-        map.put("regDate",new Date());
-        UserDaoImpl userDao = new UserDaoImpl();
-        if (userDao.insert(map) != 0){
-            response.getWriter().write("true");
+        HttpSession session = request.getSession();
+        if (session.getAttribute("authCode").equals(request.getParameter("emailE")) &&session.getAttribute("authCode") != null){
+            String account = request.getParameter("account");
+            String email = request.getParameter("email");
+            String password = Md5Util.md5(request.getParameter("password"));
+            User user = new User();
+            user.setAccount(account);
+            user.setPassword(password);
+            user.setEmail(email);
+            user.setPhoto("1.jpg");
+            user.setNickname("用户"+account);
+            user.setRegDate(new Date());
+            user.setBirthDay(null);
+            UserDaoImpl userDao = new UserDaoImpl();
+            if (userDao.insert(user) != 0){
+                session.setAttribute("user", user);
+                response.sendRedirect("index.jsp");
+            }else {
+                response.sendRedirect("signup.jsp");
+            }
         }else {
-            response.getWriter().write("false");
+            request.setAttribute("emailE_err","验证码错误,请再次获取");
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
         }
     }
 

@@ -19,7 +19,7 @@ public class LoginServlet extends HttpServlet {
         String account = request.getParameter("account");
         String password = Md5Util.md5(request.getParameter("password"));
         UserDaoImpl userDao = new UserDaoImpl();
-        User user = userDao.getOne(account);
+        User user = userDao.getSingleOne("account",account);
         if (user != null && password.equals(user.getPassword())) {
             if (user.getForBidden()) {
                 HttpSession session = request.getSession();

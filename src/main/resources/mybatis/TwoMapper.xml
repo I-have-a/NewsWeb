@@ -7,7 +7,13 @@
         select *
         from `news-sys`.news
                  left join `news-sys`.news_tag on news.id = news_tag.news_id
-        where news_tag.tag_id = #{id}
+        <where>
+            <choose>
+                <when test="id != null">
+                    news_tag.tag_id = #{id}
+                </when>
+            </choose>
+        </where>
     </select>
     <update id="updateTest">
 

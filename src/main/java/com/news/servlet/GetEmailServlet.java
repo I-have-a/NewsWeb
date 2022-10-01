@@ -15,8 +15,8 @@ public class GetEmailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         try {
-            String authCode = MailDemoSum.testMail(email);
-            response.getWriter().write(authCode);
+            String authCode = MailDemoSum.textMail(email);
+            request.getSession().setAttribute("authCode",authCode);
         } catch (Exception e) {
             e.printStackTrace();
         }
