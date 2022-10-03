@@ -3,9 +3,10 @@ package com.news.servlet;
 import com.news.dao.Impl.UserDaoImpl;
 import com.news.model.User;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /*
@@ -14,7 +15,7 @@ import java.io.IOException;
 @WebServlet("/selectEmailServlet")
 public class SelectEmailServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String email = request.getParameter("email");
         UserDaoImpl userDao = new UserDaoImpl();
         User user = userDao.getSingleOne("email",email);
@@ -24,7 +25,7 @@ public class SelectEmailServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 
     }
 }

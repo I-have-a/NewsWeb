@@ -39,7 +39,7 @@
 </div>
 <div class="container container-small">
     <h1>注册
-        <small>已有帐号，<a href="logout.jsp">登录</a></small>
+        <small>已有账号，<a href="logout.jsp">登录</a></small>
     </h1>
     <form action="signupServlet" method="post">
         <div class="form-group">

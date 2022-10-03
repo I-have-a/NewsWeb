@@ -19,15 +19,15 @@ public class UserDaoImpl implements Base<User> {
     }
 
     @Override
-    public <E> List<User> getSingleWhere(String k, E e) {
+    public <V> List<User> getSingleWhere(String k, V v) {
         return null;
     }
 
 
     @Override
-    public <E> User getSingleOne(String k , E e) {
+    public <V> User getSingleOne(String k , V v) {
         HashMap map = new HashMap();
-        map.put(k, e);
+        map.put(k, v);
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();
         UserMapper userMapper = session.getMapper(UserMapper.class);
         User user = userMapper.getUser(map);

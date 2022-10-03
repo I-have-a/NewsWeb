@@ -13,11 +13,11 @@ public interface Base<T> {
     /**
      * 单条件查询列表
      * @param k 要查询的字段
-     * @param e 值
-     * @param <E> 不定类型
+     * @param v 值
+     * @param <V> 不定类型
      * @return list列表
      */
-    <E> List<T> getSingleWhere(String k, E e);
+    <V> List<T> getSingleWhere(String k, V v);
 
     /**
      * 单条件查询

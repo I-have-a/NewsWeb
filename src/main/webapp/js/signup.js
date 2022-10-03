@@ -1,16 +1,16 @@
-var accountflog = false;//账号判定
-var passwordflog = false;//密码判定
-var passwordConfirmFlog = false;//密码对比判定
-var emailflog = false;//邮箱判定
+let accountflog = false;//账号判定
+let passwordflog = false;//密码判定
+let passwordConfirmFlog = false;//密码对比判定
+let emailflog = false;//邮箱判定
 
-var account = document.getElementById("account")
-var password = document.getElementById("password")
-var password_1 = document.getElementById("password_1")
-var email = document.getElementById("email")
+let account = document.getElementById("account");
+let password = document.getElementById("password");
+let password_1 = document.getElementById("password_1");
+let email = document.getElementById("email");
 
 account.onblur = function accountOnblur() {
-    var reg = /^\w{8,13}$/;
-    var userName = this.value
+    let reg = /^\w{8,13}$/;
+    let userName = this.value;
     if (reg.test(userName)) {
         document.getElementById("userName_err2").style.display = "none";
     } else {
@@ -21,7 +21,7 @@ account.onblur = function accountOnblur() {
     /*
         ajax数据
      */
-    var xhttp;
+    let xhttp;
     xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 
     //发起请求
@@ -42,11 +42,11 @@ account.onblur = function accountOnblur() {
         }
     };
     //判定一次表单信息
-    Confirm()
+    new Confirm()
 }
 
 password.onblur = function passwordOnblur() {
-    var reg = /^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z0-9 _]{8,13}$/;
+    let reg = /^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z0-9 _]{8,13}$/;
     if (reg.test(this.value)) {
         document.getElementById("password_err").style.display = "none"
         passwordflog = true
@@ -54,7 +54,7 @@ password.onblur = function passwordOnblur() {
         document.getElementById("password_err").style.display = ""
         passwordflog = false
     }
-    Confirm()
+    new Confirm()
 }
 
 password_1.onblur = function password_1Onblur() {
@@ -65,11 +65,11 @@ password_1.onblur = function password_1Onblur() {
         document.getElementById("password_1_err").style.display = "none"
         passwordConfirmFlog = true
     }
-    Confirm()
+    new Confirm()
 }
 
 email.onblur = function emailOnblur() {
-    var reg = /^[1-9]([0-9]{4,10})@qq\.com$/;
+    let reg = /^[1-9]([0-9]{4,10})@qq\.com$/;
     if (reg.test(this.value)) {
         document.getElementById("email_err").style.display = "none"
     } else {
@@ -77,7 +77,7 @@ email.onblur = function emailOnblur() {
         emailflog = false
         return
     }
-    var xhttp;
+    let xhttp;
     xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 
     xhttp.open("GET", "http://localhost:8080/news_sys_war_exploded/selectEmailServlet?email=" + this.value);
@@ -94,16 +94,16 @@ email.onblur = function emailOnblur() {
             }
         }
     };
-    Confirm()
+    new Confirm()
 }
 
-var getEmail = document.getElementById("getEmail")
+let getEmail = document.getElementById("getEmail");
 /*
     获取验证码
  */
 getEmail.onclick = function () {
-    var email = document.getElementById("email").value
-    var xhttp;
+    let email = document.getElementById("email").value;
+    let xhttp;
     xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
     xhttp.open("GET", "http://localhost:8080/news_sys_war_exploded/getEmailServlet?email=" + email);
     xhttp.send();
@@ -111,7 +111,6 @@ getEmail.onclick = function () {
 
 /**
  * 表单总判定
- * @constructor
  */
 function Confirm() {
     if (accountflog && passwordflog && passwordConfirmFlog && emailflog) {
