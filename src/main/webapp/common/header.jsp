@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.news.dao.Impl.CategoryDaoImpl" %>
 <%@ page import="com.news.model.Category" %>
@@ -12,7 +13,7 @@
 <div class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
-            <a href="index.jsp" class="navbar-brand"></a>
+            <a href="./index.jsp" class="navbar-brand"></a>
         </div>
         <!-- class="visible-xs-inline-block"：在超小屏幕上显示-->
         <label for="toggle-checkbox" id="toggle-label" class="visible-xs-inline-block">菜单</label>
@@ -25,30 +26,36 @@
                     // 调用Dao，获取新闻分类列表
                     CategoryDaoImpl categoryDao = new CategoryDaoImpl();
                     List<Category> categoryList = categoryDao.getAll();
-
-                    //获取session中保存的账户信息
-                    User user = (User) session.getAttribute("user");
                 %>
-                <li <%if (category == null) {%> class="active"<%}%>><a href="index.jsp">首页</a></li>
+                <li <%if (category == null) {%> class="active"<%}%>><a href="./index.jsp">首页</a></li>
                 <% for (Category c : categoryList) {%>
                 <li <%if(category!=null && c.getId() == Integer.parseInt(category)){%>class="active"<%}%>><a
-                        href="index.jsp?category=<%=c.getId()%>"><%=c.getName()%>
+                        href="./index.jsp?category=<%=c.getId()%>"><%=c.getName()%>
                 </a></li>
                 <%}%>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <%if (user == null) {%>
-                <li><a href="login.jsp">登录</a></li>
-                <%} else {%>
-                <li><a href="#"><img class="img-circle" width="40px" src="img/photos/<%=user.getPhoto()%>" alt=""></a>
-                </li>
-                <li><a href="#"><%=user.getNickname()%>
-                </a></li>
-                <li><a href="logout.jsp">退出</a></li>
-                <%}%>
-                <li><a href="signup.jsp">注册</a></li>
+                <c:if test="${user== null || user == ''}">
+                    <li><a href="./login.jsp">登录</a></li>
+                    <li><a href="./signup.jsp">注册</a></li>
+                </c:if>
+                <c:if test="${user != null}">
+                    <li><a href="#"><img class="img-circle" width="40px" src="img/photos/${user.photo}" alt=""></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">${user.nickname}<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./userinfo.jsp">个人信息</a></li>
+                            <li><a href="#">修改密码</a></li>
+                            <li class="divider"></li>
+                            <li><a href="./logout.jsp">退出</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="./signup.jsp">注册</a></li>
+                </c:if>
             </ul>
         </div>
     </div>
 </div>
-
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery-3.2.1.min.js"></script>
