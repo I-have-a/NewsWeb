@@ -71,6 +71,11 @@ public class NewsDaoImpl implements Base<News> {
         return 0;
     }
 
+    @Override
+    public boolean update(News news) {
+        return false;
+    }
+
 
     public List<News> getTagNews(int id) {
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();

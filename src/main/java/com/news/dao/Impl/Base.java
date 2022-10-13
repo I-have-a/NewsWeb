@@ -34,4 +34,6 @@ public interface Base<T> {
      * @return 影响的行数
      */
     int insert(T t);
+
+    boolean update(T t);
 }

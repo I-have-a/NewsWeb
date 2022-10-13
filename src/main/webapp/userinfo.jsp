@@ -79,7 +79,20 @@
     </div>
 </div>
 <jsp:include page="common/tail.jsp" flush="true"></jsp:include>
-<script src="./js/bootstrap.min.js"></script>
-<script src="./js/jquery-3.2.1.min.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap-datepicker.min.js"></script>
+<script src="./js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script src="./js/jquery.validate.min.js"></script>
+<script src="./js/messages_zh.js"></script>
+<script>
+    $().ready(function (){
+        // 设置日期选择器
+        $('#birthday').datepicker({
+            language: 'zh-CN', //语言
+            clearBtn: true,//清除按钮
+            format: "yyyy-mm-dd"//日期格式
+        });
+    });
+</script>
 </body>
 </html>

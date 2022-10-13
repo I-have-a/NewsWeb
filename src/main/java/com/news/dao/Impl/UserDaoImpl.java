@@ -44,4 +44,14 @@ public class UserDaoImpl implements Base<User> {
         session.close();
         return t;
     }
+
+    @Override
+    public boolean update(User user) {
+        SqlSession session = SqlLink.getSqlSessionFactory().openSession();
+        UserMapper userMapper = session.getMapper(UserMapper.class);
+        int t = userMapper.updateAll(user);
+        session.commit();
+        session.close();
+        return t == 1;
+    }
 }

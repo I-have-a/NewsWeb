@@ -1,4 +1,4 @@
-package com.news.servlet;
+package com.news.web.servlet;
 
 import com.news.Tool.MailDemoSum;
 

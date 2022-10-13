@@ -1,5 +1,7 @@
 package com.news.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
@@ -8,7 +10,7 @@ public class User {
     private String nickname;//昵称
     private String password;//密码
     private String photo;//头像路径
-    private Date birthDay;//生日
+    private String birthDay;//生日
     private String email;//邮箱
     private String mobile;//电话号码
     private Date regDate;//注册时间
@@ -74,11 +76,19 @@ public class User {
     }
 
     public Date getBirthDay() {
-        return birthDay;
+        Date parse = null;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            parse = simpleDateFormat.parse(birthDay);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return parse;
     }
 
     public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        this.birthDay = df.format(birthDay);
     }
 
     public String getEmail() {
