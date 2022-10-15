@@ -88,7 +88,11 @@ public class User {
 
     public void setBirthDay(Date birthDay) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        this.birthDay = df.format(birthDay);
+        String format = String.valueOf(birthDay);
+        if (birthDay != null){
+            format = df.format(birthDay);
+        }
+        this.birthDay = format;
     }
 
     public String getEmail() {

@@ -91,7 +91,12 @@
     </div>
 </div>
 <jsp:include page="common/tail.jsp" flush="true"></jsp:include>
-<script src="./js/jquery-3.2.1.min.js"></script>
-<script src="./js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datepicker.min.js"></script>
+<script src="js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script src="js/messages_zh.js"></script>
 </body>
 </html>

@@ -43,7 +43,7 @@
             user.photo = #{photo},
             user.birthDay = #{birthDay},
             user.mobile = #{mobile}
-        where user.id = #{Id}
+        where user.id = #{id}
 
     </update>
 

@@ -41,7 +41,7 @@
     <h1>注册
         <small>已有账号，<a href="logout.jsp">登录</a></small>
     </h1>
-    <form action="signupServlet" method="post">
+    <form action="User/Signup" method="post">
         <div class="form-group">
             <label class="xrequired" for="account">账号</label>
             <input type="text" class="form-control" id="account" name="account">
@@ -72,17 +72,14 @@
                 </div>
             </div>
         </div>
-        <% String err = (String) request.getAttribute("emailE_err");%>
-        <p style="color: red"><%= err != null ? err : ""%></p>
+        <p style="color: red">${emailE_err}</p>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block" disabled="disabled" id="register">注册</button>
         </div>
-        <div class="form-group last">
-            注册极客开发者头条即代表您同意<a href="#">极客开发者服务条款</a>
-        </div>
+        <jsp:include page="common/tail.jsp" flush="true"></jsp:include>
     </form>
 </div>
 <jsp:include page="common/tail.jsp" flush="true"></jsp:include>
-</body>
 <script src="js/signup.js"></script>
+</body>
 </html>

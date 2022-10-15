@@ -25,7 +25,7 @@ account.onblur = function accountOnblur() {
     xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 
     //发起请求
-    xhttp.open("GET", "http://localhost:8080/news_sys_war_exploded/selectUserServlet?userName=" + userName);
+    xhttp.open("GET", "http://localhost:8080/news_sys_war_exploded/User/SelectUser?userName=" + userName);
     xhttp.send();
 
     //响应请求
@@ -80,7 +80,7 @@ email.onblur = function emailOnblur() {
     let xhttp;
     xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 
-    xhttp.open("GET", "http://localhost:8080/news_sys_war_exploded/selectEmailServlet?email=" + this.value);
+    xhttp.open("GET", "http://localhost:8080/news_sys_war_exploded/User/SelectEmail?email=" + this.value);
     xhttp.send();
 
     xhttp.onreadystatechange = function () {
@@ -105,7 +105,7 @@ getEmail.onclick = function () {
     let email = document.getElementById("email").value;
     let xhttp;
     xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-    xhttp.open("GET", "http://localhost:8080/news_sys_war_exploded/getEmailServlet?email=" + email);
+    xhttp.open("GET", "http://localhost:8080/news_sys_war_exploded/User/GetEmail?email=" + email);
     xhttp.send();
 }
 
