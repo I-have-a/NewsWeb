@@ -79,7 +79,9 @@ public class User {
         Date parse = null;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            parse = simpleDateFormat.parse(birthDay);
+            if (birthDay!=null){
+                parse = simpleDateFormat.parse(birthDay);
+            }
         } catch (ParseException e) {
             e.printStackTrace();
         }

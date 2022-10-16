@@ -49,10 +49,12 @@
                         <div class="form-group">
                             <label for="email" class="col-sm-2 control-label">电子邮件：</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="email" id="email" placeholder="请输入电子邮件" v-model="email">
+                                <input type="text" class="form-control" name="email" id="email" placeholder="请输入电子邮件" v-model="email" @blur="emailOnblur">
+                                <p v-if="cont == 1" class="alert alert-danger">此邮箱已绑定其他账号</p>
+                                <p v-else-if="cont == 2" class="alert alert-warning">暂时只支持QQ邮箱</p>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" v-if="change">
                             <label for="emailE" class="col-sm-2 control-label">验证码</label>
                             <div class="col-sm-10">
                                 <div class="input-group">
@@ -62,11 +64,13 @@
                                     </div>
                                 </div>
                             </div>
+                            <p style="color: red">${authCodeErr}</p>
                         </div>
                         <div class="form-group">
                             <label for="mobile" class="col-sm-2 control-label">手机号码：</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="mobile" id="mobile" placeholder="请输入手机号码" v-model="mobile">
+                                <input type="text" class="form-control" name="mobile" id="mobile" placeholder="请输入手机号码" v-model="mobile" @blur="phoneBlur">
+                                <p class="alert alert-danger" v-if="phoneCont == false">请填如正确的手机号</p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -79,9 +83,9 @@
                                        accept="image/jpg,image/jpeg,image/png" v-model="photo" @change.prevent.stop="upload">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" v-model="AllCont" >
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-primary btn-block">提交</button>
+                                <button type="submit" class="btn btn-primary btn-block" :disabled="AllCont">提交</button>
                             </div>
                         </div>
                     </form>
@@ -108,10 +112,16 @@
                 nickname:"${user.nickname}",
                 birthDay:"${user.birthDay}",
                 email:"${user.email}",
+                oldEmail:"${user.email}",
                 mobile:"${user.mobile}",
                 account:"${user.account}",
                 photo:"",
-                url:"img/photos/${user.photo}"
+                change:false,
+                url:"img/photos/${user.photo}",
+                cont:0,
+                AllCont:true,
+                emailflog:false,
+                phoneCont:true
             }
         },
         methods:{
@@ -121,13 +131,13 @@
             },
             getObjectUrl(file) {
                 let url = null;
-                if (window.createObjectURL != undefined) {
+                if (window.createObjectURL !== undefined) {
                     // basic
                     url = window.createObjectURL(file);
-                } else if (window.webkitURL != undefined) {
+                } else if (window.webkitURL !== undefined) {
                     // webkit or chrome
                     url = window.webkitURL.createObjectURL(file);
-                } else if (window.URL != undefined) {
+                } else if (window.URL !== undefined) {
                     // mozilla(firefox)
                     url = window.URL.createObjectURL(file);
                 }
@@ -138,6 +148,49 @@
                 xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
                 xhttp.open("GET", "http://localhost:8080/news_sys_war_exploded/User/GetEmail?email=" + email._value);
                 xhttp.send();
+            },
+            emailOnblur(){
+                let reg = /^[1-9]([0-9]{4,10})@qq\.com$/;
+                if (reg.test(email._value)) {
+                    this.cont = 0;
+                } else {
+                    this.cont = 2;
+                    this.change = false;
+                    this.emailflog = false;
+                    return;
+                }
+                let xhttp;
+                _this = this
+                xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+
+                xhttp.open("GET", "http://localhost:8080/news_sys_war_exploded/User/SelectEmail?email=" + email._value);
+                xhttp.send();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState === 4 && this.status === 200) {
+                        if (this.responseText === "true") {
+                            _this.cont = 1;
+                            this.change = false;
+                            this.emailflog = false;
+                        } else {
+                            _this.cont = 0;
+                            this.emailflog = true;
+                        }
+                    }
+                };
+                this.change = this.oldEmail !== email._value;
+                this.Cont();
+            },
+            phoneBlur(){
+                if (this.mobile._value == null || this.mobile._value === ""){
+                    this.phoneCont = true;
+                    return;
+                }
+                let mobile = /^1[3456789]\d{9}$/;
+                this.phoneCont = mobile.test(this.mobile);
+                this.Cont();
+            },
+            Cont(){
+                this.AllCont = !(this.emailflog && this.phoneCont);
             }
         }
     });

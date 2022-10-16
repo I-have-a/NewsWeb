@@ -32,11 +32,15 @@ public class UserServlet extends BaseServlet {
 
     /* 检查邮箱重复 */
     public void SelectEmail(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws ServletException, IOException {
-        String userName = request.getParameter("userName");
+        String email = request.getParameter("email");
         UserDaoImpl userDao = new UserDaoImpl();
-        User user = userDao.getSingleOne("account", userName);
+        User user = userDao.getSingleOne("email", email);
         if (user != null) {
-            response.getWriter().write("true");
+            HttpSession session = request.getSession();
+            User user1 = (User) session.getAttribute("user");
+            if (user.getId() != user1.getId()){
+                response.getWriter().write("true");
+            }
         }
     }
 
@@ -82,6 +86,14 @@ public class UserServlet extends BaseServlet {
             e.printStackTrace();
         }
         userT.setNickname(request.getParameter("nickname"));
+        String authCode = (String) session.getAttribute("authCode");
+        if(authCode != null){
+            String emailE = (String) session.getAttribute("emailE");
+            if (!authCode.equals(emailE)){
+                session.setAttribute("authCodeErr","验证码错误，请重试");
+                response.sendRedirect(request.getContextPath() + "/userinfo.jsp");
+            }
+        }
         userT.setEmail(request.getParameter("email"));
         userT.setMobile(request.getParameter("mobile"));
         userT.setAccount(request.getParameter("account"));
@@ -137,11 +149,11 @@ public class UserServlet extends BaseServlet {
                 response.sendRedirect(request.getContextPath() + "/index.jsp");
             } else {
                 request.setAttribute("forbid", "账号已被封禁");
-                request.getRequestDispatcher(request.getContextPath() + "/login.jsp").forward(request, response);
+                response.sendRedirect(request.getContextPath() + "/login.jsp");
             }
         } else {
             request.setAttribute("err", "账号或密码输入错误");
-            request.getRequestDispatcher(request.getContextPath() + "/login.jsp").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
         }
     }
 }
