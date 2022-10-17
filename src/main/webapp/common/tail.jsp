@@ -9,6 +9,8 @@
 <div class="footer">
     Copyright © 2017 jkdev.cn | 极客开发者2017版
 </div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/jquery.validate.min.js"></script>
 <script src="js/bootstrap-datepicker.min.js"></script>

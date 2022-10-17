@@ -21,6 +21,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+//这回修改了一下文件结构，用反射的方式
+
 @WebServlet("/User/*")
 @MultipartConfig(fileSizeThreshold = 10*1024*1024,maxFileSize = 50*1024*1024,maxRequestSize = 100*1024*1024)
 public class UserServlet extends BaseServlet {
@@ -72,6 +74,7 @@ public class UserServlet extends BaseServlet {
         String uploadFilePath = realPath + File.separator + UPLOAD_DIRECTORY;
         HttpSession session = request.getSession();
         User userT = (User) session.getAttribute("user");
+        //这边我用的servlet3文件上传
         for (Part part : request.getParts()) {
             String submittedFileName = part.getSubmittedFileName();
             if (submittedFileName != null && !submittedFileName.equals("")) {
@@ -101,10 +104,8 @@ public class UserServlet extends BaseServlet {
         if (userDao.update(userT)) {
             session.setAttribute("user", userT);
             response.sendRedirect(request.getContextPath() + "/index.jsp");
-            session.setAttribute("updateMark", "修改成功");
         } else {
             response.sendRedirect(request.getContextPath() + "/userinfo.jsp");
-            session.setAttribute("updateMark", "修改失败");
         }
     }
 
@@ -157,7 +158,14 @@ public class UserServlet extends BaseServlet {
         }
     }
 
+    /* 修改密码 */
     public void ChangePassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        String newPassword = request.getParameter("newPassword");
+        user.setPassword(Md5Util.md5(newPassword));
+        UserDaoImpl userDao = new UserDaoImpl();
+        if (userDao.update(user)) response.sendRedirect(request.getContextPath() + "/index.jsp");
+        else response.sendRedirect(request.getContextPath() + "/changePassword.jsp");
     }
 }

@@ -36,5 +36,4 @@ public class CategoryDaoImpl implements Base<Category> {
     public boolean update(Category category) {
         return false;
     }
-
 }

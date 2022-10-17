@@ -58,7 +58,7 @@ password.onblur = function passwordOnblur() {
 }
 
 password_1.onblur = function password_1Onblur() {
-    if (this.value != password.value) {
+    if (this.value !== password.value) {
         document.getElementById("password_1_err").style.display = ""
         passwordConfirmFlog = false
     } else {

@@ -35,16 +35,30 @@
 
     </update>
 
-    <update id="updateAll">
+    <update id="updateOne">
         update `news-sys`.user
         set
-            user.email = #{email},
-            user.nickname = #{nickname},
-            user.photo = #{photo},
-            user.birthDay = #{birthDay},
-            user.mobile = #{mobile}
-        where user.id = #{id}
-
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="nickname != null and nickname != ''">
+                nickname = #{nickname},
+            </if>
+            <if test="photo != null and photo != ''">
+                photo = #{photo},
+            </if>
+            <if test="birthDay != null">
+                birthDay = #{birthDay},
+            </if>
+            <if test="mobile != null and mobile != ''">
+                mobile = #{mobile},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password}
+            </if>
+        <where>
+            id = #{id}
+        </where>
     </update>
 
     <delete id="deleteUser">

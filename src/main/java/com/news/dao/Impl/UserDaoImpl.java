@@ -49,7 +49,7 @@ public class UserDaoImpl implements Base<User> {
     public boolean update(User user) {
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();
         UserMapper userMapper = session.getMapper(UserMapper.class);
-        int t = userMapper.updateAll(user);
+        int t = userMapper.updateOne(user);
         session.commit();
         session.close();
         return t == 1;

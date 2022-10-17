@@ -124,6 +124,7 @@
             }
         },
         methods:{
+            //获得缩略图路径
             upload(event) {
                 let files = event.target.files[0];
                 this.url = this.getObjectUrl(files);
@@ -142,6 +143,7 @@
                 }
                 return url;
             },
+            //获取验证码，之前用过
             getEmail(){
                 let xhttp;
                 xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");

@@ -46,7 +46,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">${user.nickname}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="./userinfo.jsp">个人信息</a></li>
-                            <li><a href="#">修改密码</a></li>
+                            <li><a href="./changePassword.jsp">修改密码</a></li>
                             <li class="divider"></li>
                             <li><a href="./logout.jsp">退出</a></li>
                         </ul>

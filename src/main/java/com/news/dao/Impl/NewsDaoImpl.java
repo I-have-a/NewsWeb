@@ -76,7 +76,6 @@ public class NewsDaoImpl implements Base<News> {
         return false;
     }
 
-
     public List<News> getTagNews(int id) {
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();
         TwoMapper newsMapper = session.getMapper(TwoMapper.class);
