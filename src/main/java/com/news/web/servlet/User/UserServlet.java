@@ -74,7 +74,7 @@ public class UserServlet extends BaseServlet {
         User userT = (User) session.getAttribute("user");
         for (Part part : request.getParts()) {
             String submittedFileName = part.getSubmittedFileName();
-            if (submittedFileName != null) {
+            if (submittedFileName != null && !submittedFileName.equals("")) {
                 part.write(uploadFilePath + File.separator + submittedFileName);
                 userT.setPhoto(submittedFileName);
             }
@@ -155,5 +155,9 @@ public class UserServlet extends BaseServlet {
             request.setAttribute("err", "账号或密码输入错误");
             response.sendRedirect(request.getContextPath() + "/login.jsp");
         }
+    }
+
+    public void ChangePassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }
