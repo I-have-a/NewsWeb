@@ -1,8 +1,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.news.model.Tag" %>
-<%@ page import="com.news.dao.Impl.TagDaoImpl" %>
+<%@ page import="com.news.Impl.TagDaoImpl" %>
 <%@ page import="com.news.model.News" %>
-<%@ page import="com.news.dao.Impl.NewsDaoImpl" %>
+<%@ page import="com.news.Impl.NewsDaoImpl" %>
 <%@ page autoFlush="true" %>
 <%--
   Created by IntelliJ IDEA.
@@ -44,7 +44,7 @@
                 <%
                     List<News> newsList;
                     NewsDaoImpl newsDao = new NewsDaoImpl();
-                    newsList = newsDao.getAll();
+                    newsList = newsDao.getSingleWhere(null,null);
                     if (tagNum != null) {
                         newsList = newsDao.getTagNews(Integer.parseInt(tagNum));
                     }

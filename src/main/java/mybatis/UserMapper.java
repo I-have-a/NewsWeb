@@ -4,9 +4,10 @@ import com.news.model.User;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface UserMapper {
-    User getUser(HashMap map);
+    User getUser(Map map);
 
     List<User> getAllUser();
 

@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface TagMapper {
     List<Tag> selectTag();
+
+    List<Tag> selectOne(int newsId);
 }

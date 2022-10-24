@@ -17,7 +17,7 @@ public class TimeFormat {
      * @param date
      * @return
      */
-    public String getInterval(Date date) {
+    public static String getInterval(Date date) {
         if (date == null) {
             return "";
         }

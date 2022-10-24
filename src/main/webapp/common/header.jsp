@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.news.dao.Impl.CategoryDaoImpl" %>
+<%@ page import="com.news.Impl.CategoryDaoImpl" %>
 <%@ page import="com.news.model.Category" %>
 <%@ page import="com.news.model.User" %><%--
   Created by IntelliJ IDEA.

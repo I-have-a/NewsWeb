@@ -16,3 +16,5 @@
 <script src="js/bootstrap-datepicker.min.js"></script>
 <script src="js/bootstrap-datepicker.zh-CN.min.js"></script>
 <script src="js/messages_zh.js"></script>
+<script src="js/quill.min.js"></script>
+<script src="js/quill-emoji.js"></script>

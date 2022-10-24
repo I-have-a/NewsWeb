@@ -15,28 +15,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<div class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <a href="index.jsp" class="navbar-brand"></a>
-        </div>
-        <label for="toggle-checkbox" id="toggle-label" class="visible-xs-inline-block">菜单</label>
-        <input type="checkbox" class="hidden" id="toggle-checkbox">
-        <div class="hidden-xs">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">首页</a></li>
-                <li><a href="#">国内</a></li>
-                <li><a href="#">国际</a></li>
-                <li><a href="#">数读</a></li>
-                <li><a href="#">社会</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="login.jsp">登陆</a></li>
-                <li><a href="signup.jsp">注册</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+<jsp:include page="common/header.jsp" flush="true"></jsp:include>
 <div class="container container-small">
     <h1>注册
         <small>已有账号，<a href="logout.jsp">登录</a></small>

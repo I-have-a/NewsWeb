@@ -7,6 +7,20 @@
         select *
         from `news-sys`.tag
     </select>
+
+    <select id="selectOne" resultType="tag">
+        select id,name
+        from `news-sys`.tag
+            join `news-sys`.news_tag nt on tag.id = nt.tag_id
+        <where>
+            <choose>
+                <when test="newsId != null">
+                    nt.news_id = #{newsId}
+                </when>
+            </choose>
+        </where>
+    </select>
+
     <update id="updateTest">
 
     </update>

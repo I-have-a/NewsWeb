@@ -16,13 +16,13 @@
         <where>
             <choose>
                 <when test="account != null">
-                    user.account = #{account}
+                    account = #{account}
                 </when>
                 <when test="email != null">
-                    user.email = #{email}
+                    email = #{email}
                 </when>
                 <when test="mobile != null">
-                    user.mobile = #{mobile}
+                    mobile = #{mobile}
                 </when>
             </choose>
         </where>

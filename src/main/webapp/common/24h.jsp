@@ -1,6 +1,6 @@
 <%@ page import="com.news.model.News" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.news.dao.Impl.NewsDaoImpl" %><%--
+<%@ page import="com.news.Impl.NewsDaoImpl" %><%--
   Created by IntelliJ IDEA.
   User: 23686
   Date: 2022/9/23

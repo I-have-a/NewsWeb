@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 文件名称模板: [要操作的表名Mapper.xml] -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace: 名称空间，用来区分不同Mapper文件中的同名语句引用如: testSQL.selectTest -->
+<mapper namespace="mybatis.CommentMapper">
+    <!--
+        id: 唯一标识;
+        resultType: 返回类型, 可以用 mybatis-config 中配置的别名
+                    基础类型可以直接写
+    -->
+
+    <resultMap id="commentResultMap" type="comment">
+        <result column="pubdate" property="pubDate"/>
+        <result column="likenum" property="likeNum"/>
+        <result column="dislikenum" property="disLikeNum"/>
+        <association property="replyFor" javaType="comment">
+            <result column="reply_for_id" property="id"/>
+        </association>
+        <association property="creator" javaType="User">
+            <result column="nickname" property="nickname"/>
+            <result column="photo" property="photo"/>
+        </association>
+        <association property="news" javaType="News">
+            <result column="news_id" property="id"/>
+        </association>
+    </resultMap>
+    
+    <resultMap id="commentResultMapT" type="comment">
+        <id column="id" property="id"/>
+        <result column="content" property="content"/>
+        <result column="pubdate" property="pubDate"/>
+        <result column="ipaddress" property="ipAddress"/>
+        <result column="hidden" property="hidden"/>
+        <result column="likenum" property="likeNum"/>
+        <result column="dislikenum" property="disLikeNum"/>
+        <result column="rid" property="replyId"/>
+        <association property="replyFor" javaType="comment">
+            <result column="reply_for_id" property="id"/>
+        </association>
+        <association property="news" javaType="News">
+            <result column="news_id" property="id"/>
+        </association>
+        <association property="creator" javaType="User">
+            <result column="creator" property="id"/>
+            <result column="nickname" property="nickname"/>
+            <result column="photo" property="photo"/>
+        </association>
+    </resultMap>
+
+    <select id="selectComment" resultMap="commentResultMap">
+        select *
+        from `news-sys`.comment
+    </select>
+
+    <select id="selectCommentNews" resultMap="commentResultMap">
+        select *
+        from `news-sys`.comment
+        <where>
+            <if test="newsId != null">
+                news_id = #{newsId}
+            </if>
+            <if test="replyForId != null">
+                reply_for_id = #{replyForId}
+            </if>
+        </where>
+    </select>
+
+    <select id="getAllByNewsIdComments" resultMap="commentResultMapT">
+        select c.*, r.id as rid, u.nickname, u.photo
+        from `news-sys`.comment as c
+                 left join `news-sys`.comment as r on r.reply_for_id = c.id
+                 left join `news-sys`.user as u on c.creator=u.id
+        where c.news_id= #{newsId} and c.hidden=#{hidden}
+    </select>
+
+    <update id="updateComment">
+
+    </update>
+
+    <delete id="deleteComment">
+
+    </delete>
+
+    <insert id="insertComment">
+        insert into `news-sys`.comment
+        VALUES (null, #{content}, #{pubDate}, #{ipaddress}, #{hidden}, #{likeNum}, #{dislikeNum}, #{replyForId}, #{creator}, #{newsId});
+    </insert>
+
+</mapper>

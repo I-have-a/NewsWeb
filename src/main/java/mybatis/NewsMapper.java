@@ -9,4 +9,6 @@ public interface NewsMapper {
     List<News> selectNews(HashMap map);
 
     List<News> Recommend();
+
+    List<News> getTagNews(int id);
 }
