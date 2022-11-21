@@ -44,9 +44,9 @@ public class TimeFormat {
         } else //大于1D 小于2D
             if (second >= 60 * 60 * 24 && second <= 60 * 60 * 24 * 2) interval = "昨天" + getFormatTime(date, "HH:mm");
             else if (second >= 60 * 60 * 24 * 2 && second <= 60 * 60 * 24 * 7) {//大于2D小时 小于 7天
-            long day = ((second / 60) / 60) / 24;
-            interval = day + "天前";
-        } else //大于7天小于365天
+                long day = ((second / 60) / 60) / 24;
+                interval = day + "天前";
+            } else //大于7天小于365天
                 if (second <= 60 * 60 * 24 * 365 && second >= 60 * 60 * 24 * 7)
                     interval = getFormatTime(date, "MM-dd HH:mm");
                 else //大于365天

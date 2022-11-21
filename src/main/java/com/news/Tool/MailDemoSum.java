@@ -24,7 +24,7 @@ import java.util.Random;
  */
 public class MailDemoSum {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         // 发送邮件（文本）
         //   textMail();

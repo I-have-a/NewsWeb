@@ -18,6 +18,7 @@ public class NewsDaoImpl implements NewsDao {
 
     /**
      * 修改新闻的日期属性
+     *
      * @param news 要修改的新闻对象
      * @return 从数据库获取的新闻发布日期
      */
@@ -31,12 +32,12 @@ public class NewsDaoImpl implements NewsDao {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return new TimeFormat().getInterval(parse1);
+        return TimeFormat.getInterval(parse1);
     }
 
     @Override
     public <E> List<News> getSingleWhere(String k, E e) {
-        HashMap<String,E> map = new HashMap<>();
+        HashMap<String, E> map = new HashMap<>();
         map.put(k, e);
         SqlSession session = SqlLink.getSqlSessionFactory().openSession();
         NewsMapper newsMapper = session.getMapper(NewsMapper.class);

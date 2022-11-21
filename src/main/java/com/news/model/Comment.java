@@ -4,14 +4,14 @@ import java.util.Date;
 import java.util.List;
 
 public class Comment {
-    private  Long id;//ID
+    private Long id;//ID
     private String content;//内容
     private Date pubDate;//发布时间
     private String ipAddress;//公网IP
-    private  News news;//新闻
-    private  User creator;//评论人
-    private  Integer likeNum;//点赞数量
-    private  Integer disLikeNum;//点踩数量
+    private News news;//新闻
+    private User creator;//评论人
+    private Integer likeNum;//点赞数量
+    private Integer disLikeNum;//点踩数量
     private Comment replyFor;//父评论
     private Boolean hidden;//是否可见
     private Long replyId;//被回复的id

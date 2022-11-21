@@ -7,7 +7,7 @@
   Time: 9:26
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <div class="side-bar-card">
     <div class="card-title">24小时热闻</div>
     <div class="card-body">

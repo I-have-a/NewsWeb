@@ -30,8 +30,8 @@ account.onblur = function accountOnblur() {
 
     //响应请求
     xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            if (this.responseText == "true") {
+        if (this.readyState === 4 && this.status === 200) {
+            if (this.responseText === "true") {
                 document.getElementById("userName_err").style.display = ""
                 accountflog = false
             } else {
@@ -84,8 +84,8 @@ email.onblur = function emailOnblur() {
     xhttp.send();
 
     xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            if (this.responseText == "true") {
+        if (this.readyState === 4 && this.status === 200) {
+            if (this.responseText === "true") {
                 document.getElementById("email_err1").style.display = ""
                 emailflog = false
             } else {

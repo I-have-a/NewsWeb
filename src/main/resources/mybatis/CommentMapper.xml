@@ -75,8 +75,44 @@
         where c.news_id= #{newsId} and c.hidden=#{hidden}
     </select>
 
-    <update id="updateComment">
+    <select id="getLikeNum" resultType="int">
+        select likenum
+        from `news-sys`.comment
+        where id = #{id};
+    </select>
 
+    <select id="getDisLikeNum" resultType="int">
+        select dislikenum
+        from `news-sys`.comment
+        where id = #{id};
+    </select>
+
+    <update id="updateLikeNum">
+        update `news-sys`.comment
+        set
+            <if test="likeNum">
+                likenum = likenum + 1
+            </if>
+            <if test="!likeNum">
+                likenum = likenum - 1
+            </if>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <update id="updateDislikeNum">
+        update `news-sys`.comment
+        set
+        <if test="dislikeNum">
+            dislikenum = dislikenum + 1
+        </if>
+        <if test="!dislikeNum">
+            dislikenum = dislikenum - 1
+        </if>
+        <where>
+            id = #{id}
+        </where>
     </update>
 
     <delete id="deleteComment">

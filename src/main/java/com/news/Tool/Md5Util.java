@@ -10,6 +10,7 @@ import java.security.NoSuchAlgorithmException;
 public class Md5Util {
     /**
      * 将数据进行 MD5 加密，并以16进制字符串格式输出
+     *
      * @param data 输入的数据
      * @return 加密后的字符串
      */

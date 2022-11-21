@@ -1,12 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.news.model.User" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: zhao
   Date: 2022/10/12
   Time: 15:04
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>个人信息</title>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="form-group">
                             <label for="photo" class="col-sm-2 control-label">
-                                <img :src="url" class="img-thumbnail" width="70px" height="70px">
+                                <img :src="url" class="img-thumbnail" width="70px" height="70px" alt="">
                                 <br> 头像：
                             </label>
                             <div class="col-sm-10">

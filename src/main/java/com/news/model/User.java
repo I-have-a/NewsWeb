@@ -79,7 +79,7 @@ public class User {
         Date parse = null;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            if (birthDay!=null){
+            if (birthDay != null) {
                 parse = simpleDateFormat.parse(birthDay);
             }
         } catch (ParseException e) {
@@ -91,7 +91,7 @@ public class User {
     public void setBirthDay(Date birthDay) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String format = String.valueOf(birthDay);
-        if (birthDay != null){
+        if (birthDay != null) {
             format = df.format(birthDay);
         }
         this.birthDay = format;

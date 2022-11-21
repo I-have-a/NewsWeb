@@ -1,15 +1,13 @@
 package com.news.web.servlet;
 
+import com.news.Impl.UserDaoImpl;
 import com.news.Tool.MailDemoSum;
 import com.news.Tool.Md5Util;
-import com.news.Impl.UserDaoImpl;
 import com.news.model.User;
-import com.news.web.servlet.BaseServlet;
-
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -24,7 +22,7 @@ import java.util.Date;
 //这回修改了一下文件结构，用反射的方式
 
 @WebServlet("/User/*")
-@MultipartConfig(fileSizeThreshold = 10*1024*1024,maxFileSize = 50*1024*1024,maxRequestSize = 100*1024*1024)
+@MultipartConfig(fileSizeThreshold = 10 * 1024 * 1024, maxFileSize = 50 * 1024 * 1024, maxRequestSize = 100 * 1024 * 1024)
 public class UserServlet extends BaseServlet {
 
     private static final long serialVersionUID = 1L;
@@ -40,7 +38,7 @@ public class UserServlet extends BaseServlet {
         if (user != null) {
             HttpSession session = request.getSession();
             User user1 = (User) session.getAttribute("user");
-            if (user.getId() != user1.getId()){
+            if (user.getId() != user1.getId()) {
                 response.getWriter().write("true");
             }
         }
@@ -90,10 +88,10 @@ public class UserServlet extends BaseServlet {
         }
         userT.setNickname(request.getParameter("nickname"));
         String authCode = (String) session.getAttribute("authCode");
-        if(authCode != null){
+        if (authCode != null) {
             String emailE = (String) session.getAttribute("emailE");
-            if (!authCode.equals(emailE)){
-                session.setAttribute("authCodeErr","验证码错误，请重试");
+            if (!authCode.equals(emailE)) {
+                session.setAttribute("authCodeErr", "验证码错误，请重试");
                 response.sendRedirect(request.getContextPath() + "/userinfo.jsp");
             }
         }
